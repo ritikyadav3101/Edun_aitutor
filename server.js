@@ -1,131 +1,74 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const cors = require('cors');
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
-
-const app = express();
-app.use(cors());
+const express=require('express');
+const bcrypt=require('bcryptjs');
+const jwt=require('jsonwebtoken');
+const https=require('https');
+const fs=require('fs');
+const path=require('path');
+const app=express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
-
-const SECRET = process.env.JWT_SECRET || 'edun-secret-2024';
-const GROQ_KEY = (process.env.GROQ_KEY || '').trim();
-
-const DB_FILE = path.join(__dirname, 'users.json');
-function loadDB() {
-  try { return JSON.parse(fs.readFileSync(DB_FILE, 'utf8')); }
-  catch { return { users: [] }; }
-}
-function saveDB(db) {
-  fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
-}
-
-function authMiddleware(req, res, next) {
-  const token = req.headers.authorization?.split(' ')[1];
-  if (!token) return res.status(401).json({ error: 'No token' });
-  try { req.user = jwt.verify(token, SECRET); next(); }
-  catch { res.status(401).json({ error: 'Invalid token' }); }
-}
-
-app.post('/api/register', async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-    if (!name || !email || !password)
-      return res.status(400).json({ error: 'All fields required' });
-    const db = loadDB();
-    if (db.users.find(u => u.email === email))
-      return res.status(400).json({ error: 'Email already exists' });
-    const hashed = await bcrypt.hash(password, 10);
-    const user = {
-      id: Date.now().toString(),
-      name, email,
-      password: hashed,
-      plan: 'free',
-      createdAt: new Date().toISOString()
-    };
-    db.users.push(user);
-    saveDB(db);
-    const token = jwt.sign({ id: user.id, email, name, plan: 'free' }, SECRET, { expiresIn: '30d' });
-    res.json({ token, user: { id: user.id, name, email, plan: 'free' } });
-  } catch(e) { res.status(500).json({ error: e.message }); }
+app.use(express.static(path.join(__dirname,'public')));
+const S=process.env.JWT_SECRET||'edun2024';
+const G=(process.env.GROQ_KEY||'').trim();
+const DB=path.join(__dirname,'users.json');
+const load=()=>{try{return JSON.parse(fs.readFileSync(DB,'utf8'))}catch{return{users:[]}}};
+const save=d=>fs.writeFileSync(DB,JSON.stringify(d));
+const auth=(req,res,next)=>{try{req.user=jwt.verify((req.headers.authorization||'').split(' ')[1],S);next()}catch{res.status(401).json({error:'Unauthorized'})}};
+app.post('/api/register',async(req,res)=>{
+  try{
+    const{name,email,password}=req.body;
+    if(!name||!email||!password)return res.status(400).json({error:'All fields required'});
+    const db=load();
+    if(db.users.find(u=>u.email===email))return res.status(400).json({error:'Email exists'});
+    const user={id:Date.now().toString(),name,email,password:await bcrypt.hash(password,10),plan:'free'};
+    db.users.push(user);save(db);
+    const token=jwt.sign({id:user.id,name,email,plan:'free'},S,{expiresIn:'30d'});
+    res.json({token,user:{id:user.id,name,email,plan:'free'}});
+  }catch(e){res.status(500).json({error:e.message})}
 });
-
-app.post('/api/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const db = loadDB();
-    const user = db.users.find(u => u.email === email);
-    if (!user) return res.status(400).json({ error: 'User not found' });
-    const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return res.status(400).json({ error: 'Wrong password' });
-    const token = jwt.sign({ id: user.id, email, name: user.name, plan: user.plan }, SECRET, { expiresIn: '30d' });
-    res.json({ token, user: { id: user.id, name: user.name, email, plan: user.plan } });
-  } catch(e) { res.status(500).json({ error: e.message }); }
+app.post('/api/login',async(req,res)=>{
+  try{
+    const{email,password}=req.body;
+    const db=load();
+    const user=db.users.find(u=>u.email===email);
+    if(!user)return res.status(400).json({error:'User not found'});
+    if(!await bcrypt.compare(password,user.password))return res.status(400).json({error:'Wrong password'});
+    const token=jwt.sign({id:user.id,name:user.name,email,plan:user.plan},S,{expiresIn:'30d'});
+    res.json({token,user:{id:user.id,name:user.name,email,plan:user.plan}});
+  }catch(e){res.status(500).json({error:e.message})}
 });
-
-app.get('/api/user', authMiddleware, (req, res) => {
-  const db = loadDB();
-  const user = db.users.find(u => u.id === req.user.id);
-  if (!user) return res.status(404).json({ error: 'Not found' });
-  res.json({ id: user.id, name: user.name, email: user.email, plan: user.plan });
+app.post('/api/upgrade',auth,(req,res)=>{
+  try{
+    const db=load();
+    const user=db.users.find(u=>u.id===req.user.id);
+    if(!user)return res.status(404).json({error:'Not found'});
+    user.plan=req.body.plan;save(db);
+    const token=jwt.sign({id:user.id,name:user.name,email:user.email,plan:user.plan},S,{expiresIn:'30d'});
+    res.json({token,plan:user.plan});
+  }catch(e){res.status(500).json({error:e.message})}
 });
-
-app.post('/api/upgrade', authMiddleware, (req, res) => {
-  try {
-    const { plan } = req.body;
-    const db = loadDB();
-    const user = db.users.find(u => u.id === req.user.id);
-    if (!user) return res.status(404).json({ error: 'Not found' });
-    user.plan = plan;
-    saveDB(db);
-    const token = jwt.sign({ id: user.id, email: user.email, name: user.name, plan }, SECRET, { expiresIn: '30d' });
-    res.json({ token, plan });
-  } catch(e) { res.status(500).json({ error: e.message }); }
-});
-
-app.post('/api/ask', authMiddleware, async (req, res) => {
-  try {
-    const { messages, system } = req.body;
-    const payload = JSON.stringify({
-      model: 'llama-3.3-70b-versatile',
-      messages: [
-        { role: 'system', content: system || 'You are a helpful exam preparation assistant.' },
-        ...messages
-      ],
-      max_tokens: 2048
+app.post('/api/ask',auth,(req,res)=>{
+  const{messages,system}=req.body;
+  const payload=JSON.stringify({
+    model:'llama-3.1-8b-instant',
+    messages:[{role:'system',content:system||'You are a helpful exam tutor.'},...messages],
+    max_tokens:1500
+  });
+  const r=https.request({
+    hostname:'api.groq.com',
+    path:'/openai/v1/chat/completions',
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+G,'Content-Length':Buffer.byteLength(payload)}
+  },apiRes=>{
+    let d='';
+    apiRes.on('data',c=>d+=c);
+    apiRes.on('end',()=>{
+      try{
+        const p=JSON.parse(d);
+        res.json({reply:p.choices[0].message.content});
+      }catch(e){res.status(500).json({error:d})}
     });
-    const options = {
-      hostname: 'api.groq.com',
-      path: '/openai/v1/chat/completions',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + GROQ_KEY,
-        'Content-Length': Buffer.byteLength(payload)
-      }
-    };
-    const apiReq = https.request(options, apiRes => {
-      let data = '';
-      apiRes.on('data', d => data += d);
-      apiRes.on('end', () => {
-        try {
-          const parsed = JSON.parse(data);
-          if (parsed.choices && parsed.choices[0]) {
-            res.json({ reply: parsed.choices[0].message.content });
-          } else {
-            res.status(500).json({ error: JSON.stringify(parsed) });
-          }
-        } catch(e) { res.status(500).json({ error: data }); }
-      });
-    });
-    apiReq.on('error', e => res.status(500).json({ error: e.message }));
-    apiReq.write(payload);
-    apiReq.end();
-  } catch(e) { res.status(500).json({ error: e.message }); }
+  });
+  r.on('error',e=>res.status(500).json({error:e.message}));
+  r.write(payload);r.end();
 });
-
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => console.log('Edun running on port ' + PORT));
+app.listen(process.env.PORT||10000,'0.0.0.0',()=>console.log('Edun running!'));
