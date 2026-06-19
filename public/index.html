@@ -1,10 +1,550 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Edun - Loading</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6366f1">
+<title>Edun — AI Exam Preparation India</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--p:#6366f1;--pd:#4f46e5;--bg:#0f0f13;--bg2:#16161d;--bg3:#1e1e2a;--bd:#2a2a3a;--t:#e2e2e8;--t2:#8888aa;--g:#10b981;--y:#f59e0b;--r:#ef4444}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);min-height:100vh}
+nav{position:fixed;top:0;width:100%;background:rgba(15,15,19,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);z-index:1000;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:22px;font-weight:800;background:linear-gradient(135deg,#6366f1,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-btns{display:flex;gap:8px}
+.btn{padding:9px 18px;border-radius:10px;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;transition:all 0.2s}
+.btn-o{background:transparent;border:1px solid var(--bd);color:var(--t)}
+.btn-p{background:linear-gradient(135deg,#6366f1,#4f46e5);color:white}
+.btn-p:hover{opacity:0.9;transform:translateY(-1px)}
+.btn-o:hover{border-color:var(--p);color:var(--p)}
+.hero{padding:110px 20px 50px;text-align:center;max-width:780px;margin:0 auto}
+.hbadge{display:inline-block;padding:5px 14px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:11px;color:#6366f1;margin-bottom:18px;letter-spacing:1px}
+.hero h1{font-size:38px;font-weight:800;line-height:1.2;margin-bottom:18px}
+.hero h1 span{background:linear-gradient(135deg,#6366f1,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:16px;color:var(--t2);margin-bottom:35px;line-height:1.7}
+.hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.sec{padding:55px 20px;max-width:980px;margin:0 auto}
+.sec h2{font-size:26px;font-weight:700;text-align:center;margin-bottom:8px}
+.sec p.sub{color:var(--t2);text-align:center;margin-bottom:35px;font-size:14px}
+.egrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.ecard{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:18px;text-align:center;cursor:pointer;transition:all 0.3s}
+.ecard:hover{border-color:var(--p);transform:translateY(-3px);box-shadow:0 8px 25px rgba(99,102,241,0.15)}
+.eicon{font-size:30px;margin-bottom:8px}
+.ename{font-weight:700;font-size:14px;margin-bottom:4px}
+.edesc{font-size:10px;color:var(--t2)}
+.ebadge{display:inline-block;margin-top:6px;padding:2px 8px;border-radius:8px;font-size:9px;font-weight:700}
+.bf{background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.3)}
+.bp{background:rgba(99,102,241,0.1);color:#6366f1;border:1px solid rgba(99,102,241,0.3)}
+.be{background:rgba(245,158,11,0.1);color:#f59e0b;border:1px solid rgba(245,158,11,0.3)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:35px}
+.pcard{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:28px;text-align:center;position:relative}
+.pcard.pop{border-color:var(--p);box-shadow:0 0 25px rgba(99,102,241,0.15)}
+.pbadge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#6366f1,#4f46e5);color:white;padding:3px 14px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
+.pname{font-size:12px;color:var(--t2);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase}
+.pamount{font-size:38px;font-weight:800;margin-bottom:4px}
+.pamount span{font-size:14px;font-weight:400;color:var(--t2)}
+.pper{font-size:11px;color:var(--t2);margin-bottom:22px}
+.plist{list-style:none;margin-bottom:22px;text-align:left}
+.plist li{padding:7px 0;border-bottom:1px solid var(--bd);font-size:12px;display:flex;align-items:center;gap:7px}
+.plist li:last-child{border:none}
+.ck{color:#10b981}.cx{color:#ef4444}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;margin-top:35px}
+.fcard{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:18px}
+.fi{font-size:26px;margin-bottom:10px}
+.ft{font-weight:700;margin-bottom:6px;font-size:14px}
+.fd{font-size:12px;color:var(--t2);line-height:1.6}
+.stats{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:35px 20px;margin:35px 0}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;max-width:650px;margin:0 auto;text-align:center}
+.snum{font-size:30px;font-weight:800;background:linear-gradient(135deg,#6366f1,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.slabel{font-size:11px;color:var(--t2);margin-top:4px}
+footer{background:var(--bg2);border-top:1px solid var(--bd);padding:25px 20px;text-align:center;color:var(--t2);font-size:12px}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.87);z-index:2000;align-items:center;justify-content:center;padding:15px}
+.modal.active{display:flex}
+.mbox{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:28px;width:100%;max-width:390px}
+.mtitle{font-size:20px;font-weight:700;margin-bottom:4px}
+.msub{color:var(--t2);font-size:12px;margin-bottom:22px}
+.ig{margin-bottom:13px}
+.ig label{display:block;font-size:12px;margin-bottom:5px;color:var(--t2)}
+.ig input{width:100%;padding:11px 14px;background:var(--bg3);border:1px solid var(--bd);border-radius:9px;color:var(--t);font-family:'Inter',sans-serif;font-size:13px;outline:none}
+.ig input:focus{border-color:var(--p)}
+.mfooter{margin-top:12px;text-align:center;font-size:12px;color:var(--t2)}
+.mfooter a{color:var(--p);cursor:pointer}
+.errmsg{color:#ef4444;font-size:11px;margin-top:8px;display:none;padding:7px;background:rgba(239,68,68,0.08);border-radius:7px}
+.closem{float:right;cursor:pointer;color:var(--t2);font-size:22px;line-height:1;background:none;border:none;color:var(--t2)}
+.dash{display:none;min-height:100vh;padding-top:70px}
+.dlayout{display:flex;min-height:calc(100vh - 70px)}
+.sidebar{width:210px;background:var(--bg2);border-right:1px solid var(--bd);padding:18px;position:fixed;height:calc(100vh - 70px);overflow-y:auto;top:70px;left:0}
+.sitem{display:flex;align-items:center;gap:9px;padding:11px 13px;border-radius:9px;cursor:pointer;margin-bottom:4px;font-size:13px;color:var(--t2);transition:all 0.2s}
+.sitem:hover,.sitem.active{background:rgba(99,102,241,0.1);color:var(--p)}
+.dcontent{margin-left:210px;flex:1;padding:22px}
+.dtitle{font-size:20px;font-weight:700;margin-bottom:4px}
+.dsub{color:var(--t2);font-size:13px;margin-bottom:22px}
+.plbadge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700}
+.pl-free{background:rgba(16,185,129,0.1);color:#10b981}
+.pl-pro{background:rgba(99,102,241,0.1);color:#6366f1}
+.pl-elite{background:rgba(245,158,11,0.1);color:#f59e0b}
+.tlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:18px}
+.titem{background:var(--bg2);border:1px solid var(--bd);border-radius:11px;padding:13px;cursor:pointer;transition:all 0.2s}
+.titem:hover{border-color:var(--p);background:rgba(99,102,241,0.05)}
+.tname{font-weight:600;font-size:13px;margin-bottom:3px}
+.tsub{font-size:11px;color:var(--t2)}
+.chatbox{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+.cmodes{display:flex;gap:7px;padding:13px;border-bottom:1px solid var(--bd);flex-wrap:wrap}
+.mbtn{padding:6px 12px;border-radius:18px;border:1px solid var(--bd);background:transparent;color:var(--t2);font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s}
+.mbtn.active{background:var(--p);border-color:var(--p);color:white}
+.cmsgs{height:360px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:13px}
+.msg{max-width:85%;padding:11px 14px;border-radius:11px;font-size:13px;line-height:1.7}
+.mu{background:linear-gradient(135deg,#6366f1,#4f46e5);color:white;align-self:flex-end;border-radius:11px 11px 3px 11px}
+.ma{background:var(--bg3);border:1px solid var(--bd);align-self:flex-start;border-radius:11px 11px 11px 3px}
+.tbox{background:rgba(99,102,241,0.08);border-left:3px solid var(--p);padding:9px;margin-top:9px;border-radius:4px;font-style:italic;font-size:12px}
+.ciarea{padding:13px;border-top:1px solid var(--bd);display:flex;gap:9px}
+.cinput{flex:1;padding:11px 14px;background:var(--bg3);border:1px solid var(--bd);border-radius:9px;color:var(--t);font-family:'Inter',sans-serif;font-size:13px;outline:none;resize:none;height:46px}
+.cinput:focus{border-color:var(--p)}
+.sbtn{padding:11px 18px;background:linear-gradient(135deg,#6366f1,#4f46e5);border:none;border-radius:9px;color:white;cursor:pointer;font-size:17px}
+.ldots{display:inline-flex;gap:4px;padding:11px 14px}
+.dot{width:7px;height:7px;background:var(--t2);border-radius:50%;animation:bounce 1.4s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-9px)}}
+.exhdr{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:18px;margin-bottom:18px;display:flex;align-items:center;gap:13px}
+.exhi{font-size:36px}
+.exhinfo h2{font-size:18px;font-weight:700}
+.exhinfo p{color:var(--t2);font-size:12px}
+.scard{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:22px;max-width:480px}
+@media(max-width:700px){.sidebar{width:100%;height:auto;position:relative;top:0}.dlayout{flex-direction:column}.dcontent{margin-left:0}.sgrid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:28px}}
+</style>
 </head>
-<body style="background:#0f0f13;color:white;font-family:sans-serif;text-align:center;padding:50px">
-<h1>Edun is Working! ✅</h1>
-<p>Server running correctly</p>
+<body>
+
+<nav id="navbar">
+  <div class="logo">Edun</div>
+  <div class="nav-btns" id="navBtns">
+    <button class="btn btn-o" onclick="showModal('login')">Login</button>
+    <button class="btn btn-p" onclick="showModal('register')">Start Free</button>
+  </div>
+</nav>
+
+<!-- LANDING -->
+<div id="landing">
+  <div class="hero">
+    <div class="hbadge">⚡ AI-Powered Exam Preparation</div>
+    <h1>Crack Any Exam With<br/><span>Your Personal AI Tutor</span></h1>
+    <p>From 10th Board to JEE & NEET — AI guidance, memory tricks, mock tests and strategies. Study smarter, not harder.</p>
+    <div class="hbtns">
+      <button class="btn btn-p" style="font-size:15px;padding:13px 28px" onclick="showModal('register')">Start Free Today →</button>
+      <button class="btn btn-o" style="font-size:15px;padding:13px 28px" onclick="document.getElementById('exams').scrollIntoView({behavior:'smooth'})">View Exams</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="sgrid">
+      <div><div class="snum">6+</div><div class="slabel">Exams</div></div>
+      <div><div class="snum">AI</div><div class="slabel">Powered</div></div>
+      <div><div class="snum">24/7</div><div class="slabel">Available</div></div>
+      <div><div class="snum">₹99</div><div class="slabel">Starting</div></div>
+    </div>
+  </div>
+
+  <div class="sec" id="exams">
+    <h2>Choose Your Exam</h2>
+    <p class="sub">Specialized AI tutor for each exam</p>
+    <div class="egrid">
+      <div class="ecard" onclick="landingExam('10th CBSE')"><div class="eicon">📚</div><div class="ename">10th CBSE</div><div class="edesc">Board Exam</div><span class="ebadge bf">FREE</span></div>
+      <div class="ecard" onclick="landingExam('12th CBSE')"><div class="eicon">🎓</div><div class="ename">12th CBSE</div><div class="edesc">Board Exam</div><span class="ebadge bf">FREE</span></div>
+      <div class="ecard" onclick="landingExam('SSC CGL')"><div class="eicon">🏛️</div><div class="ename">SSC CGL</div><div class="edesc">Govt Job</div><span class="ebadge bp">PRO</span></div>
+      <div class="ecard" onclick="landingExam('NEET')"><div class="eicon">🔬</div><div class="ename">NEET</div><div class="edesc">Medical</div><span class="ebadge bp">PRO</span></div>
+      <div class="ecard" onclick="landingExam('JEE')"><div class="eicon">⚙️</div><div class="ename">JEE</div><div class="edesc">Engineering</div><span class="ebadge be">ELITE</span></div>
+      <div class="ecard" onclick="landingExam('CUET')"><div class="eicon">🏫</div><div class="ename">CUET</div><div class="edesc">Central Uni</div><span class="ebadge be">ELITE</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>Everything You Need</h2>
+    <p class="sub">Better than any coaching center</p>
+    <div class="fgrid">
+      <div class="fcard"><div class="fi">🧠</div><div class="ft">Memory Tricks</div><div class="fd">Smart mnemonics to remember complex topics instantly</div></div>
+      <div class="fcard"><div class="fi">📝</div><div class="ft">Topic AI</div><div class="fd">Deep dive into any topic with exam-specific AI</div></div>
+      <div class="fcard"><div class="fi">❓</div><div class="ft">Mock Tests</div><div class="fd">Practice with exam-pattern MCQs and instant explanations</div></div>
+      <div class="fcard"><div class="fi">📅</div><div class="ft">Previous Years</div><div class="fd">Most repeated questions with detailed solutions</div></div>
+      <div class="fcard"><div class="fi">⚡</div><div class="ft">Quick Revision</div><div class="fd">Last minute notes and expected questions</div></div>
+      <div class="fcard"><div class="fi">🎯</div><div class="ft">Exam Strategy</div><div class="fd">Time management and scoring strategy</div></div>
+    </div>
+  </div>
+
+  <div class="sec" id="pricing">
+    <h2>Simple Pricing</h2>
+    <p class="sub">No hidden charges — cancel anytime</p>
+    <div class="pgrid">
+      <div class="pcard">
+        <div class="pname">Starter</div>
+        <div class="pamount">₹0<span>/mo</span></div>
+        <div class="pper">Free forever</div>
+        <ul class="plist">
+          <li><span class="ck">✓</span>10th & 12th CBSE</li>
+          <li><span class="ck">✓</span>Basic AI tutoring</li>
+          <li><span class="ck">✓</span>20 questions/day</li>
+          <li><span class="ck">✓</span>Memory tricks</li>
+          <li><span class="cx">✗</span>SSC CGL & NEET</li>
+          <li><span class="cx">✗</span>Mock tests</li>
+        </ul>
+        <button class="btn btn-o" style="width:100%" onclick="showModal('register')">Get Started Free</button>
+      </div>
+      <div class="pcard pop">
+        <div class="pbadge">⭐ Most Popular</div>
+        <div class="pname">Pro</div>
+        <div class="pamount">₹99<span>/mo</span></div>
+        <div class="pper">Billed monthly</div>
+        <ul class="plist">
+          <li><span class="ck">✓</span>All Free features</li>
+          <li><span class="ck">✓</span>SSC CGL & NEET</li>
+          <li><span class="ck">✓</span>Unlimited questions</li>
+          <li><span class="ck">✓</span>Mock test generator</li>
+          <li><span class="ck">✓</span>Previous year Qs</li>
+          <li><span class="cx">✗</span>JEE & CUET</li>
+        </ul>
+        <button class="btn btn-p" style="width:100%" onclick="doUpgrade('pro')">Upgrade to Pro</button>
+      </div>
+      <div class="pcard">
+        <div class="pname">Elite</div>
+        <div class="pamount">₹199<span>/mo</span></div>
+        <div class="pper">Billed monthly</div>
+        <ul class="plist">
+          <li><span class="ck">✓</span>All Pro features</li>
+          <li><span class="ck">✓</span>JEE & CUET</li>
+          <li><span class="ck">✓</span>All 6 exams</li>
+          <li><span class="ck">✓</span>Advanced AI model</li>
+          <li><span class="ck">✓</span>Priority support</li>
+          <li><span class="ck">✓</span>Study planner</li>
+        </ul>
+        <button class="btn btn-p" style="width:100%;background:linear-gradient(135deg,#f59e0b,#d97706)" onclick="doUpgrade('elite')">Upgrade to Elite</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Edun • AI-Powered Exam Preparation • Made in India 🇮🇳</p>
+    <p style="margin-top:6px">edun.ai@gmail.com • Privacy Policy • Terms</p>
+  </footer>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dash" class="dash">
+  <div class="dlayout">
+    <div class="sidebar">
+      <div style="margin-bottom:18px">
+        <div style="font-weight:700;font-size:15px" id="sbName">Student</div>
+        <div id="sbPlan" class="plbadge pl-free" style="margin-top:5px">FREE</div>
+      </div>
+      <div class="sitem active" onclick="showSec('home')"><span>🏠</span>Home</div>
+      <div class="sitem" onclick="showSec('exams')"><span>📚</span>My Exams</div>
+      <div class="sitem" onclick="showSec('practice')"><span>❓</span>Practice</div>
+      <div class="sitem" onclick="showSec('upgrade')"><span>👑</span>Upgrade</div>
+      <div class="sitem" onclick="showSec('settings')"><span>⚙️</span>Settings</div>
+      <div class="sitem" style="color:var(--r);margin-top:15px" onclick="doLogout()"><span>🚪</span>Logout</div>
+    </div>
+    <div class="dcontent">
+
+      <div id="sec-home">
+        <div class="dtitle" id="welcomeMsg">Welcome! 👋</div>
+        <div class="dsub">What do you want to study today?</div>
+        <div class="egrid" id="homeGrid"></div>
+      </div>
+
+      <div id="sec-exams" style="display:none">
+        <div class="dtitle">All Exams</div>
+        <div class="dsub">Select an exam to start</div>
+        <div class="egrid" id="allGrid"></div>
+      </div>
+
+      <div id="sec-ev" style="display:none">
+        <button class="btn btn-o" style="margin-bottom:13px;font-size:12px" onclick="showSec('exams')">← Back</button>
+        <div class="exhdr" id="exHdr"></div>
+        <div class="tlist" id="topicList"></div>
+        <div class="chatbox">
+          <div class="cmodes">
+            <button class="mbtn active" onclick="setMode('learn',this)">📚 Learn</button>
+            <button class="mbtn" onclick="setMode('trick',this)">🧠 Tricks</button>
+            <button class="mbtn" onclick="setMode('quiz',this)">❓ Quiz</button>
+            <button class="mbtn" onclick="setMode('pyq',this)">📋 PYQ</button>
+            <button class="mbtn" onclick="setMode('strategy',this)">🎯 Strategy</button>
+            <button class="mbtn" onclick="setMode('revision',this)">⚡ Revision</button>
+          </div>
+          <div class="cmsgs" id="chatMsgs">
+            <div class="msg ma">👋 Select a topic above or ask me anything about your exam!</div>
+          </div>
+          <div class="ciarea">
+            <textarea class="cinput" id="chatIn" placeholder="Ask anything..." onkeypress="chatKey(event)"></textarea>
+            <button class="sbtn" onclick="sendMsg()">➤</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="sec-practice" style="display:none">
+        <div class="dtitle">Practice Tests</div>
+        <div class="dsub">Select exam for practice MCQs</div>
+        <div class="egrid" id="practiceGrid"></div>
+      </div>
+
+      <div id="sec-upgrade" style="display:none">
+        <div class="dtitle">Upgrade Plan</div>
+        <div class="dsub">Unlock more exams and features</div>
+        <div class="pgrid">
+          <div class="pcard">
+            <div class="pname">Starter</div>
+            <div class="pamount">₹0<span>/mo</span></div>
+            <ul class="plist">
+              <li><span class="ck">✓</span>10th & 12th CBSE</li>
+              <li><span class="ck">✓</span>20 questions/day</li>
+              <li><span class="cx">✗</span>SSC,NEET,JEE,CUET</li>
+            </ul>
+            <button class="btn btn-o" style="width:100%" disabled>Current Plan</button>
+          </div>
+          <div class="pcard pop">
+            <div class="pbadge">⭐ Popular</div>
+            <div class="pname">Pro</div>
+            <div class="pamount">₹99<span>/mo</span></div>
+            <ul class="plist">
+              <li><span class="ck">✓</span>SSC CGL & NEET</li>
+              <li><span class="ck">✓</span>Unlimited questions</li>
+              <li><span class="ck">✓</span>Mock tests + PYQ</li>
+            </ul>
+            <button class="btn btn-p" style="width:100%" onclick="doUpgrade('pro')">₹99/mo →</button>
+          </div>
+          <div class="pcard">
+            <div class="pname">Elite</div>
+            <div class="pamount">₹199<span>/mo</span></div>
+            <ul class="plist">
+              <li><span class="ck">✓</span>All 6 exams</li>
+              <li><span class="ck">✓</span>JEE & CUET</li>
+              <li><span class="ck">✓</span>Advanced AI</li>
+            </ul>
+            <button class="btn btn-p" style="width:100%;background:linear-gradient(135deg,#f59e0b,#d97706)" onclick="doUpgrade('elite')">₹199/mo →</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="sec-settings" style="display:none">
+        <div class="dtitle">Settings</div>
+        <div class="dsub">Your account details</div>
+        <div class="scard">
+          <div style="margin-bottom:15px"><div style="font-size:12px;color:var(--t2);margin-bottom:4px">Name</div><div style="font-weight:600" id="setName">-</div></div>
+          <div style="margin-bottom:15px"><div style="font-size:12px;color:var(--t2);margin-bottom:4px">Email</div><div style="font-weight:600" id="setEmail">-</div></div>
+          <div style="margin-bottom:20px"><div style="font-size:12px;color:var(--t2);margin-bottom:4px">Plan</div><div id="setPlan" class="plbadge pl-free">FREE</div></div>
+          <button class="btn btn-o" style="width:100%;color:var(--r);border-color:var(--r)" onclick="doLogout()">Logout</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="modal" id="loginModal">
+  <div class="mbox">
+    <button class="closem" onclick="closeModal('login')">×</button>
+    <div class="mtitle">Welcome back! 👋</div>
+    <div class="msub">Login to continue</div>
+    <div class="ig"><label>Email</label><input type="email" id="lEmail" placeholder="your@email.com"/></div>
+    <div class="ig"><label>Password</label><input type="password" id="lPass" placeholder="••••••••"/></div>
+    <div class="errmsg" id="lErr">Invalid credentials</div>
+    <button class="btn btn-p" style="width:100%;margin-top:5px" onclick="doLogin()">Login →</button>
+    <div class="mfooter">No account? <a onclick="switchM('login','register')">Register free</a></div>
+  </div>
+</div>
+
+<div class="modal" id="registerModal">
+  <div class="mbox">
+    <button class="closem" onclick="closeModal('register')">×</button>
+    <div class="mtitle">Create Account 🚀</div>
+    <div class="msub">Start free preparation</div>
+    <div class="ig"><label>Full Name</label><input type="text" id="rName" placeholder="Your name"/></div>
+    <div class="ig"><label>Email</label><input type="email" id="rEmail" placeholder="your@email.com"/></div>
+    <div class="ig"><label>Password</label><input type="password" id="rPass" placeholder="Create password"/></div>
+    <div class="errmsg" id="rErr">Error</div>
+    <button class="btn btn-p" style="width:100%;margin-top:5px" onclick="doRegister()">Create Free Account →</button>
+    <div class="mfooter">Have account? <a onclick="switchM('register','login')">Login</a></div>
+  </div>
+</div>
+
+<div class="modal" id="payModal">
+  <div class="mbox">
+    <button class="closem" onclick="closeModal('pay')">×</button>
+    <div class="mtitle">Upgrade Plan 👑</div>
+    <div class="msub" id="paySub">Complete payment to unlock</div>
+    <div style="background:var(--bg3);border-radius:11px;padding:18px;margin-bottom:18px;text-align:center;border:1px solid var(--bd)">
+      <div style="font-size:12px;color:var(--t2)">Pay via UPI</div>
+      <div style="font-size:28px;font-weight:800;margin:8px 0" id="payAmt">₹99</div>
+      <div style="font-size:20px;font-weight:700;color:var(--p)">edun@ybl</div>
+      <div style="font-size:11px;color:var(--t2);margin-top:6px">Send to above UPI ID then enter transaction ID</div>
+    </div>
+    <div class="ig"><label>UPI Transaction ID</label><input type="text" id="txnId" placeholder="Enter transaction ID after payment"/></div>
+    <button class="btn btn-p" style="width:100%" onclick="confirmPay()">Confirm Payment →</button>
+    <div style="font-size:11px;color:var(--t2);margin-top:8px;text-align:center">Verified manually within 2 hours</div>
+  </div>
+</div>
+
+<script>
+const EXAMS={
+  '10th CBSE':{icon:'📚',desc:'Class 10 Board',plan:'free',topics:['Mathematics','Science Physics','Science Chemistry','Science Biology','History','Geography','Civics','Economics','English','Hindi']},
+  '12th CBSE':{icon:'🎓',desc:'Class 12 Board',plan:'free',topics:['Physics','Chemistry','Mathematics','Biology','Accountancy','Business Studies','Economics','English','Computer Science','History','Political Science']},
+  'SSC CGL':{icon:'🏛️',desc:'Combined Graduate Level',plan:'pro',topics:['General Intelligence','General Awareness','Quantitative Aptitude','English Comprehension','Current Affairs','Data Interpretation','Verbal Ability','Reasoning']},
+  'NEET':{icon:'🔬',desc:'Medical Entrance',plan:'pro',topics:['Physics Mechanics','Physics Thermodynamics','Physics Optics','Physics Modern Physics','Chemistry Physical','Chemistry Organic','Chemistry Inorganic','Biology Botany','Biology Zoology','Biology Genetics','Biology Ecology']},
+  'JEE':{icon:'⚙️',desc:'Engineering Entrance',plan:'elite',topics:['Physics Mechanics','Physics Electrostatics','Physics Optics','Physics Modern Physics','Chemistry Physical','Chemistry Organic','Chemistry Inorganic','Maths Calculus','Maths Algebra','Maths Coordinate Geometry','Maths Trigonometry','Maths Vectors']},
+  'CUET':{icon:'🏫',desc:'Central University Entrance',plan:'elite',topics:['English Language','General Test','Numerical Ability','Logical Reasoning','General Knowledge','Current Affairs','Verbal Ability','Quantitative Reasoning','Domain Subject']}
+};
+
+const SYSPROMPTS={
+  learn:`You are an expert AI tutor for Indian competitive exams. Give clear detailed explanations with examples. Always include memory tricks marked with 💡. Highlight important exam points with ⭐. Be student-friendly.`,
+  trick:`You are a memory technique expert for Indian exams. Provide ONLY memory tricks, mnemonics, acronyms and visual associations. Make them fun and exam-specific.`,
+  quiz:`You are an Indian exam question generator. Generate exactly 5 MCQ questions like the real exam. Format: Question, 4 options A/B/C/D, correct answer with explanation.`,
+  pyq:`You are an expert on Indian exam previous year questions. Share the most important frequently repeated questions for the given topic. Include patterns and why each concept is tested.`,
+  strategy:`You are an exam strategy expert. Give time management tips, marking scheme strategy, common mistakes to avoid, and scoring maximization tips.`,
+  revision:`You are a quick revision specialist. Create concise bullet-point revision notes of the most important points. Include key facts, important dates/numbers, formulae. Maximum 1 minute read.`
+};
+
+let CU=null,CE=null,CT=null,CM='learn',CH=[];
+
+function canAccess(p){const pl=['free','pro','elite'];return pl.indexOf(CU?.plan||'free')>=pl.indexOf(p)}
+
+async function doRegister(){
+  const n=document.getElementById('rName').value.trim();
+  const e=document.getElementById('rEmail').value.trim();
+  const p=document.getElementById('rPass').value;
+  if(!n||!e||!p){showErr('rErr','All fields required!');return}
+  try{
+    const r=await fetch('/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,password:p})});
+    const d=await r.json();
+    if(d.error){showErr('rErr',d.error);return}
+    localStorage.setItem('et',d.token);
+    localStorage.setItem('eu',JSON.stringify(d.user));
+    CU=d.user;closeModal('register');showDash();
+  }catch(e){showErr('rErr','Connection error!');}
+}
+
+async function doLogin(){
+  const e=document.getElementById('lEmail').value.trim();
+  const p=document.getElementById('lPass').value;
+  if(!e||!p){showErr('lErr','All fields required!');return}
+  try{
+    const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,password:p})});
+    const d=await r.json();
+    if(d.error){showErr('lErr',d.error);return}
+    localStorage.setItem('et',d.token);
+    localStorage.setItem('eu',JSON.stringify(d.user));
+    CU=d.user;closeModal('login');showDash();
+  }catch(e){showErr('lErr','Connection error!');}
+}
+
+function doLogout(){
+  localStorage.removeItem('et');localStorage.removeItem('eu');
+  CU=null;
+  document.getElementById('dash').style.display='none';
+  document.getElementById('landing').style.display='block';
+  document.getElementById('navBtns').innerHTML=`<button class="btn btn-o" onclick="showModal('login')">Login</button><button class="btn btn-p" onclick="showModal('register')">Start Free</button>`;
+}
+
+function showDash(){
+  document.getElementById('landing').style.display='none';
+  document.getElementById('dash').style.display='block';
+  document.getElementById('navBtns').innerHTML=`<span style="font-size:12px;color:var(--t2)">Hi ${CU.name.split(' ')[0]}!</span><button class="btn btn-o" onclick="doLogout()">Logout</button>`;
+  document.getElementById('sbName').textContent=CU.name;
+  const pb=document.getElementById('sbPlan');pb.textContent=CU.plan.toUpperCase();pb.className=`plbadge pl-${CU.plan}`;
+  document.getElementById('welcomeMsg').textContent=`Welcome, ${CU.name.split(' ')[0]}! 👋`;
+  document.getElementById('setName').textContent=CU.name;
+  document.getElementById('setEmail').textContent=CU.email;
+  document.getElementById('setPlan').textContent=CU.plan.toUpperCase();
+  document.getElementById('setPlan').className=`plbadge pl-${CU.plan}`;
+  buildGrids();
+}
+
+function buildGrids(){
+  ['homeGrid','allGrid','practiceGrid'].forEach(id=>{
+    const c=document.getElementById(id);c.innerHTML='';
+    Object.entries(EXAMS).forEach(([name,ex])=>{
+      const ok=canAccess(ex.plan);
+      if(id==='homeGrid'&&!ok)return;
+      const d=document.createElement('div');d.className='ecard';
+      d.style.opacity=ok?'1':'0.6';
+      d.innerHTML=`<div class="eicon">${ex.icon}</div><div class="ename">${name}</div><div class="edesc">${ex.desc}</div><span class="ebadge b${ex.plan==='free'?'f':ex.plan==='pro'?'p':'e'}">${ex.plan.toUpperCase()}</span>${!ok?'<div style="font-size:10px;color:var(--r);margin-top:4px">🔒 Upgrade</div>':''}`;
+      d.onclick=()=>{if(!ok){showSec('upgrade');return}openExam(name,ex);};
+      c.appendChild(d);
+    });
+  });
+}
+
+function openExam(name,ex){
+  CE=name;CT=null;CH=[];showSec('ev');
+  document.getElementById('exHdr').innerHTML=`<div class="exhi">${ex.icon}</div><div class="exhinfo"><h2>${name}</h2><p>${ex.desc} • ${ex.topics.length} topics</p></div>`;
+  const tl=document.getElementById('topicList');tl.innerHTML='';
+  ex.topics.forEach(t=>{
+    const d=document.createElement('div');d.className='titem';
+    d.innerHTML=`<div class="tname">${t}</div><div class="tsub">Click to study</div>`;
+    d.onclick=()=>{CT=t;document.querySelectorAll('.titem').forEach(x=>x.style.borderColor='var(--bd)');d.style.borderColor='var(--p)';const q=`Give ${CM} session on "${t}" for ${CE}`;addMsg(q,'u');askAI(q);};
+    tl.appendChild(d);
+  });
+  document.getElementById('chatMsgs').innerHTML=`<div class="msg ma">👋 Welcome to <strong>${name}</strong>! Select a topic above or ask anything. 🎯</div>`;
+}
+
+function setMode(m,btn){
+  CM=m;document.querySelectorAll('.mbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  if(CT){const q=`${m==='quiz'?'Generate 5 MCQs':m==='trick'?'Give memory tricks':m==='pyq'?'Share previous year questions':m==='strategy'?'Give exam strategy':m==='revision'?'Quick revision summary':'Explain in detail'} for "${CT}" in ${CE}`;addMsg(`Mode: ${m.toUpperCase()} - ${CT}`,'u');askAI(q);}
+}
+
+async function askAI(q){
+  const token=localStorage.getItem('et');
+  CH.push({role:'user',content:q});
+  const ld=document.createElement('div');ld.className='msg ma';ld.innerHTML='<div class="ldots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+  document.getElementById('chatMsgs').appendChild(ld);scrollChat();
+  const sys=SYSPROMPTS[CM]+`\n\nExam: ${CE}\nTopic: ${CT||'General'}\nStudent Plan: ${CU?.plan}`;
+  try{
+    const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({messages:CH,system:sys})});
+    const d=await r.json();ld.remove();
+    if(d.reply){CH.push({role:'assistant',content:d.reply});addMsg(d.reply,'a');}
+    else addMsg('Error: '+JSON.stringify(d),'a');
+  }catch(e){ld.remove();addMsg('Connection error. Check internet!','a');}
+}
+
+function addMsg(text,s){
+  const d=document.createElement('div');d.className=`msg m${s}`;
+  if(s==='a'){d.innerHTML=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/💡(.*?)(?=\n|$)/g,'<div class="tbox">💡$1</div>').replace(/⭐(.*?)(?=\n|$)/g,'<div class="tbox">⭐$1</div>').replace(/\n/g,'<br>');}
+  else d.textContent=text;
+  document.getElementById('chatMsgs').appendChild(d);scrollChat();
+}
+
+function scrollChat(){const c=document.getElementById('chatMsgs');c.scrollTop=c.scrollHeight;}
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
+function sendMsg(){const i=document.getElementById('chatIn');const t=i.value.trim();if(!t)return;addMsg(t,'u');askAI(t);i.value='';}
+
+function showSec(n){
+  ['home','exams','ev','practice','upgrade','settings'].forEach(s=>{const e=document.getElementById('sec-'+s);if(e)e.style.display='none';});
+  const t=document.getElementById('sec-'+n);if(t)t.style.display='block';
+  document.querySelectorAll('.sitem').forEach(i=>i.classList.remove('active'));
+}
+
+let selPlan=null;
+function doUpgrade(p){if(!CU){showModal('register');return}selPlan=p;const a={pro:'₹99',elite:'₹199'};document.getElementById('payAmt').textContent=a[p];document.getElementById('paySub').textContent=`Upgrading to ${p.toUpperCase()}`;showModal('pay');}
+
+async function confirmPay(){
+  const tx=document.getElementById('txnId').value.trim();
+  if(!tx){alert('Enter transaction ID!');return}
+  const token=localStorage.getItem('et');
+  try{
+    const r=await fetch('/api/upgrade',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({plan:selPlan})});
+    const d=await r.json();
+    if(d.token){localStorage.setItem('et',d.token);CU.plan=selPlan;localStorage.setItem('eu',JSON.stringify(CU));closeModal('pay');showDash();alert(`✅ Upgraded to ${selPlan.toUpperCase()}!`);}
+  }catch(e){alert('Error. Contact support!');}
+}
+
+function landingExam(n){if(!CU){showModal('register');return}const ex=EXAMS[n];if(canAccess(ex.plan)){showDash();openExam(n,ex);}else{showDash();showSec('upgrade');}}
+function showModal(t){document.getElementById(t+'Modal').classList.add('active');}
+function closeModal(t){document.getElementById(t+'Modal').classList.remove('active');}
+function switchM(f,t){closeModal(f);showModal(t);}
+function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.style.display='block';setTimeout(()=>e.style.display='none',3000);}
+
+window.onload=()=>{
+  const t=localStorage.getItem('et');const u=localStorage.getItem('eu');
+  if(t&&u){CU=JSON.parse(u);showDash();}
+};
+</script>
 </body>
-</html>
+      </html>
