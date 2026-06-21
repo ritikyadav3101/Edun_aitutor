@@ -140,7 +140,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bd);padding:25px 20px;te
       <div><div class="snum">6+</div><div class="slabel">Exams Covered</div></div>
       <div><div class="snum">NCERT</div><div class="slabel">Syllabus Based</div></div>
       <div><div class="snum">24/7</div><div class="slabel">Available</div></div>
-      <div><div class="snum">₹59</div><div class="slabel">Starting Price</div></div>
+      <div><div class="snum">₹99</div><div class="slabel">Starting Price</div></div>
     </div>
   </div>
 
@@ -350,7 +350,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bd);padding:25px 20px;te
     <div class="msub" id="paySub">Complete payment to unlock features</div>
     <div style="background:var(--bg3);border-radius:11px;padding:20px;margin-bottom:18px;text-align:center;border:1px solid var(--bd)">
       <div style="font-size:12px;color:var(--t2);margin-bottom:5px">Pay via UPI</div>
-      <div style="font-size:32px;font-weight:800;margin:8px 0;color:var(--p)" id="payAmt">₹59</div>
+      <div style="font-size:32px;font-weight:800;margin:8px 0;color:var(--p)" id="payAmt">₹99</div>
       <div style="font-size:22px;font-weight:700;color:var(--t);padding:10px;background:var(--bg2);border-radius:8px;letter-spacing:1px">edun@ybl</div>
       <div style="font-size:11px;color:var(--t2);margin-top:8px">Send exact amount to above UPI ID<br/>Then enter transaction ID below</div>
     </div>
@@ -648,7 +648,7 @@ let selPlan2=null;
 function doUpgrade(p){
   if(!CU){showModal('register');return}
   selPlan2=p;
-  const amounts={pro:'₹59',elite:'₹199'};
+  const amounts={pro:'₹99',elite:'₹199'};
   document.getElementById('payAmt').textContent=amounts[p];
   document.getElementById('paySub').textContent=`Upgrading to ${p.toUpperCase()} Plan`;
   showModal('pay');
