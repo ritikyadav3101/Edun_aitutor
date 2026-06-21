@@ -1,6 +1,21 @@
 {
+<<<<<<< HEAD
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1"
+=======
+  "name": "edun",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0"
+>>>>>>> b7e219dbee1acb0e55162b7ee5cf357c69f4ed10
   }
 }
