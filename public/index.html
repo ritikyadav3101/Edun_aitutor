@@ -692,6 +692,7 @@ function showErr(id,msg){
   setTimeout(()=>e.style.display='none',4000);
 }
 
+window.onerror=function(msg,src,line){alert("JS ERROR: "+msg+" line:"+line);return true;};
 window.onload=()=>{
   const t=localStorage.getItem('et');
   const u=localStorage.getItem('eu');
