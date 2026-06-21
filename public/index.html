@@ -112,7 +112,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bd);padding:25px 20px;te
 @keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-9px)}}
 .sett-card{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:22px;max-width:480px}
 .upgrade-banner{background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(14,165,233,0.1));border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:15px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap}
-@media(max-width:700px){.sidebar{width:100%;height:auto;position:relative;top:0;display:none}.dlayout{flex-direction:column}.dcontent{margin-left:0}.sgrid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:28px}}
+@media(max-width:700px){.sidebar{width:100%;height:auto;position:relative;top:0}.dlayout{flex-direction:column}.dcontent{margin-left:0}.sgrid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:28px}}
 </style>
 </head>
 <body>
@@ -360,8 +360,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bd);padding:25px 20px;te
   </div>
 </div>
 
-
-
+<script src="/syllabus.js"></script>
 <script>
 const EXAM_CONFIG={
   '10th CBSE':{icon:'📚',desc:'Class 10 Board',plan:'free',color:'#10b981'},
@@ -699,5 +698,30 @@ window.onload=()=>{
   if(t&&u){CU=JSON.parse(u);showDash();}
 };
 </script>
-<script src="/syllabus.js"></script></body>
+</body>
 </html>
+<script>
+async function applyPromo(){
+  const code=document.getElementById('promoCode')?.value?.trim();
+  if(!code){alert('Enter a promo code!');return}
+  const token=localStorage.getItem('et');
+  try{
+    const r=await fetch('/api/apply-promo',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+      body:JSON.stringify({code})
+    });
+    const d=await r.json();
+    if(d.token){
+      localStorage.setItem('et',d.token);
+      CU.plan=d.plan;
+      localStorage.setItem('eu',JSON.stringify(CU));
+      closeModal('pay');
+      showDash();
+      alert('🎉 '+d.message);
+    }else{
+      alert('❌ '+(d.error||'Invalid promo code'));
+    }
+  }catch(e){alert('Connection error');}
+}
+</script>
