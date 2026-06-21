@@ -190,8 +190,8 @@ footer{background:var(--bg2);border-top:1px solid var(--bd);padding:25px 20px;te
       <div class="pcard pop">
         <div class="pbadge">⭐ Best Value</div>
         <div class="pname">Pro</div>
-        <div class="pamount">₹59<span>/mo</span></div>
-        <div class="pper">10th and 12th full + SSC and NEET</div>
+        <div class="pamount">₹99<span>/mo</span></div>
+        <div class="pper">10th, 12th, SSC CGL and NEET</div>
         <ul class="plist">
           <li><span class="ck">✓</span>10th and 12th CBSE full</li>
           <li><span class="ck">✓</span>SSC CGL and NEET</li>
@@ -200,7 +200,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bd);padding:25px 20px;te
           <li><span class="ck">✓</span>Mock tests and PYQ</li>
           <li><span class="ck">✓</span>Exam strategy sessions</li>
         </ul>
-        <button class="btn btn-p" style="width:100%" onclick="doUpgrade('pro')">Upgrade ₹59/mo →</button>
+        <button class="btn btn-p" style="width:100%" onclick="doUpgrade('pro')">Upgrade ₹99/mo →</button>
       </div>
       <div class="pcard">
         <div class="pname">Elite</div>
@@ -278,14 +278,14 @@ footer{background:var(--bg2);border-top:1px solid var(--bd);padding:25px 20px;te
           <div class="pcard pop">
             <div class="pbadge">⭐ Best Value</div>
             <div class="pname">Pro</div>
-            <div class="pamount">₹59<span>/mo</span></div>
+            <div class="pamount">₹99<span>/mo</span></div>
             <ul class="plist">
               <li><span class="ck">✓</span>10th 12th full access</li>
               <li><span class="ck">✓</span>SSC CGL and NEET</li>
               <li><span class="ck">✓</span>All features unlocked</li>
               <li><span class="ck">✓</span>Unlimited questions</li>
             </ul>
-            <button class="btn btn-p" style="width:100%" onclick="doUpgrade('pro')">Upgrade ₹59/mo →</button>
+            <button class="btn btn-p" style="width:100%" onclick="doUpgrade('pro')">Upgrade ₹99/mo →</button>
           </div>
           <div class="pcard">
             <div class="pname">Elite</div>
@@ -700,3 +700,28 @@ window.onload=()=>{
 </script>
 </body>
 </html>
+<script>
+async function applyPromo(){
+  const code=document.getElementById('promoCode')?.value?.trim();
+  if(!code){alert('Enter a promo code!');return}
+  const token=localStorage.getItem('et');
+  try{
+    const r=await fetch('/api/apply-promo',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+      body:JSON.stringify({code})
+    });
+    const d=await r.json();
+    if(d.token){
+      localStorage.setItem('et',d.token);
+      CU.plan=d.plan;
+      localStorage.setItem('eu',JSON.stringify(CU));
+      closeModal('pay');
+      showDash();
+      alert('🎉 '+d.message);
+    }else{
+      alert('❌ '+(d.error||'Invalid promo code'));
+    }
+  }catch(e){alert('Connection error');}
+}
+</script>
