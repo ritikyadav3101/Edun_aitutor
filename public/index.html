@@ -361,7 +361,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bd);padding:25px 20px;te
 </div>
 
 
-<script src="/syllabus.js"></script>
+<script src="/syllabus.js" onload="console.log("syllabus loaded")"></script>
 <script>
 const EXAM_CONFIG={
   '10th CBSE':{icon:'📚',desc:'Class 10 Board',plan:'free',color:'#10b981'},
@@ -702,28 +702,3 @@ window.onload=()=>{
 </script>
 </body>
 </html>
-<script>
-async function applyPromo(){
-  const code=document.getElementById('promoCode')?.value?.trim();
-  if(!code){alert('Enter a promo code!');return}
-  const token=localStorage.getItem('et');
-  try{
-    const r=await fetch('/api/apply-promo',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
-      body:JSON.stringify({code})
-    });
-    const d=await r.json();
-    if(d.token){
-      localStorage.setItem('et',d.token);
-      CU.plan=d.plan;
-      localStorage.setItem('eu',JSON.stringify(CU));
-      closeModal('pay');
-      showDash();
-      alert('🎉 '+d.message);
-    }else{
-      alert('❌ '+(d.error||'Invalid promo code'));
-    }
-  }catch(e){alert('Connection error');}
-}
-</script>
