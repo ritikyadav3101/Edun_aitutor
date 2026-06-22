@@ -467,7 +467,7 @@ function selectExam(examName){
   updateBreadcrumb();
   let html=`<h2 style="font-size:18px;font-weight:700;margin-bottom:18px">${EXAM_CONFIG[examName].icon} ${examName} — Choose Subject</h2><div class="slist">`;
   Object.keys(syllabus).forEach(sub=>{
-    html+=`<div class="scard-item" onclick="selectSubject('${sub}')"><h3>${sub}</h3><p>${syllabus[sub].chapters?Object.keys(syllabus[sub]).length:Object.keys(syllabus[sub]).length} topics</p></div>`;
+    html+=`<div class="scard-item" onclick="selectSubject('${sub}')"><h3>${sub}</h3><p>${syllabus[sub].length} topics</p></div>`;
   });
   html+='</div>';
   showStudyContent(html);
@@ -478,7 +478,7 @@ function selectSubject(subject){
   const syllabus=NCERT_SYLLABUS[curExam][subject];
   updateBreadcrumb();
   let html=`<h2 style="font-size:18px;font-weight:700;margin-bottom:18px">${subject} — Choose Chapter</h2><div class="slist">`;
-  syllabus.chapters.forEach((ch,i)=>{
+  syllabus.forEach((ch,i)=>{
     html+=`<div class="scard-item" onclick="selectChapter(${i})"><h3>${ch.name}</h3><p>${ch.topics.length} topics</p></div>`;
   });
   html+='</div>';
@@ -486,7 +486,7 @@ function selectSubject(subject){
 }
 
 function selectChapter(idx){
-  const chapter=NCERT_SYLLABUS[curExam][curSubject].chapters[idx];
+  const chapter=NCERT_SYLLABUS[curExam][curSubject][idx];
   curChapter=chapter.name;curTopic=null;
   updateBreadcrumb();
   let html=`<h2 style="font-size:18px;font-weight:700;margin-bottom:18px">${chapter.name} — Choose Topic</h2><div class="slist">`;
@@ -624,7 +624,7 @@ function updateBreadcrumb(){
   if(curExam)html+=` <span onclick="selectExam('${curExam}')">${curExam}</span>`;
   if(curSubject)html+=` / <span onclick="selectSubject('${curSubject}')">${curSubject}</span>`;
   if(curChapter){
-    const idx=NCERT_SYLLABUS[curExam]?.[curSubject]?.chapters.findIndex(c=>c.name===curChapter);
+    const idx=NCERT_SYLLABUS[curExam]?.[curSubject]?.indexOf(curChapter);
     if(idx>=0)html+=` / <span onclick="selectChapter(${idx})">${curChapter.split(' - ')[0]}</span>`;
   }
   if(curTopic)html+=` / <span style="color:var(--t)">${curTopic}</span>`;
