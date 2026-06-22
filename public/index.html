@@ -467,7 +467,7 @@ function selectExam(examName){
   updateBreadcrumb();
   let html=`<h2 style="font-size:18px;font-weight:700;margin-bottom:18px">${EXAM_CONFIG[examName].icon} ${examName} — Choose Subject</h2><div class="slist">`;
   Object.keys(syllabus).forEach(sub=>{
-    html+=`<div class="scard-item" onclick="selectSubject('${sub}')"><h3>${sub}</h3><p>${syllabus[sub].chapters?syllabus[sub].chapters.length:Object.keys(syllabus[sub]).length} topics</p></div>`;
+    html+=`<div class="scard-item" onclick="selectSubject('${sub}')"><h3>${sub}</h3><p>${syllabus[sub].chapters?Object.keys(syllabus[sub]).length:Object.keys(syllabus[sub]).length} topics</p></div>`;
   });
   html+='</div>';
   showStudyContent(html);
