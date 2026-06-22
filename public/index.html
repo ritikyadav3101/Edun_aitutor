@@ -3,400 +3,595 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#6366f1">
-<link rel="manifest" href="/manifest.json">
-<title>Edun — AI Exam Preparation India</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Edun AI — India's Smartest Exam Tutor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--p:#6366f1;--pd:#4f46e5;--bg:#0f0f13;--bg2:#16161d;--bg3:#1e1e2a;--bd:#2a2a3a;--t:#e2e2e8;--t2:#8888aa;--g:#10b981;--y:#f59e0b;--r:#ef4444}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);min-height:100vh}
-nav{position:fixed;top:0;width:100%;background:rgba(15,15,19,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);z-index:1000;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:22px;font-weight:800;background:linear-gradient(135deg,#6366f1,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-btns{display:flex;gap:8px;align-items:center}
-.btn{padding:9px 18px;border-radius:10px;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;transition:all 0.2s}
-.btn-o{background:transparent;border:1px solid var(--bd);color:var(--t)}
-.btn-p{background:linear-gradient(135deg,#6366f1,#4f46e5);color:white}
-.btn-p:hover{opacity:0.9;transform:translateY(-1px)}
-.btn-o:hover{border-color:var(--p);color:var(--p)}
-.hero{padding:110px 20px 50px;text-align:center;max-width:780px;margin:0 auto}
-.hbadge{display:inline-block;padding:5px 14px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:11px;color:#6366f1;margin-bottom:18px}
-.hero h1{font-size:38px;font-weight:800;line-height:1.2;margin-bottom:18px}
-.hero h1 span{background:linear-gradient(135deg,#6366f1,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:16px;color:var(--t2);margin-bottom:35px;line-height:1.7}
-.hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+:root{--p:#7c3aed;--p2:#6d28d9;--pg:linear-gradient(135deg,#7c3aed,#2563eb);--bg:#050508;--bg2:#0d0d14;--bg3:#13131e;--bg4:#1a1a28;--bd:#252535;--t:#f0f0ff;--t2:#6b6b8a;--g:#10b981;--r:#ef4444;--y:#f59e0b;--pk:#ec4899}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--p);border-radius:2px}
+nav{position:fixed;top:0;width:100%;background:rgba(5,5,8,0.95);backdrop-filter:blur(30px);border-bottom:1px solid var(--bd);z-index:1000;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:20px;font-weight:900;background:var(--pg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px}
+.btn{padding:8px 18px;border-radius:10px;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;transition:all 0.2s}
+.btn-o{background:transparent;border:1px solid var(--bd);color:var(--t2)}
+.btn-o:hover{border-color:var(--p);color:var(--t)}
+.btn-p{background:var(--pg);color:white;box-shadow:0 4px 20px rgba(124,58,237,0.4)}
+.btn-p:hover{transform:translateY(-1px);box-shadow:0 6px 25px rgba(124,58,237,0.5)}
+.btn-y{background:linear-gradient(135deg,#f59e0b,#d97706);color:white;box-shadow:0 4px 15px rgba(245,158,11,0.3)}
+/* HERO */
+.hero{padding:100px 24px 60px;text-align:center;max-width:800px;margin:0 auto;position:relative}
+.hero-glow{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(124,58,237,0.07),transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.25);border-radius:20px;font-size:11px;color:#a78bfa;margin-bottom:22px}
+.hero h1{font-size:42px;font-weight:900;line-height:1.15;margin-bottom:20px;letter-spacing:-1px}
+.hero h1 .grad{background:var(--pg);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:16px;color:var(--t2);margin-bottom:32px;line-height:1.8;max-width:600px;margin-left:auto;margin-right:auto}
+.hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+.hf-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hf{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);padding:5px 12px;background:var(--bg2);border:1px solid var(--bd);border-radius:20px}
+/* STATS */
+.stats{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:35px 20px;margin:40px 0}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);max-width:600px;margin:0 auto;text-align:center;gap:10px}
+.snum{font-size:28px;font-weight:900;background:var(--pg);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.slabel{font-size:11px;color:var(--t2);margin-top:3px}
+/* SECTION */
 .sec{padding:55px 20px;max-width:980px;margin:0 auto}
-.sec h2{font-size:26px;font-weight:700;text-align:center;margin-bottom:8px}
-.sub{color:var(--t2);text-align:center;margin-bottom:35px;font-size:14px}
-.egrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
-.ecard{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:18px;text-align:center;cursor:pointer;transition:all 0.3s}
-.ecard:hover{border-color:var(--p);transform:translateY(-3px);box-shadow:0 8px 25px rgba(99,102,241,0.15)}
-.eicon{font-size:30px;margin-bottom:8px}
-.ename{font-weight:700;font-size:14px;margin-bottom:4px}
-.edesc{font-size:10px;color:var(--t2)}
-.ebadge{display:inline-block;margin-top:6px;padding:2px 8px;border-radius:8px;font-size:9px;font-weight:700}
-.bf{background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.3)}
-.bp{background:rgba(99,102,241,0.1);color:#6366f1;border:1px solid rgba(99,102,241,0.3)}
-.be{background:rgba(245,158,11,0.1);color:#f59e0b;border:1px solid rgba(245,158,11,0.3)}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:35px}
-.pcard{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:28px;text-align:center;position:relative}
-.pcard.pop{border-color:var(--p);box-shadow:0 0 25px rgba(99,102,241,0.15)}
-.pbadge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#6366f1,#4f46e5);color:white;padding:3px 14px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
-.pname{font-size:12px;color:var(--t2);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
-.pamount{font-size:38px;font-weight:800;margin-bottom:4px}
-.pamount span{font-size:14px;font-weight:400;color:var(--t2)}
-.pper{font-size:11px;color:var(--t2);margin-bottom:22px}
-.plist{list-style:none;margin-bottom:22px;text-align:left}
+.sec-title{font-size:26px;font-weight:800;text-align:center;margin-bottom:8px;letter-spacing:-0.5px}
+.sec-sub{color:var(--t2);text-align:center;margin-bottom:35px;font-size:13px}
+/* EXAM CARDS */
+.egrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.ecard{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:20px;text-align:center;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden}
+.ecard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--pg);opacity:0;transition:opacity 0.3s}
+.ecard:hover{border-color:rgba(124,58,237,0.5);transform:translateY(-4px);box-shadow:0 12px 30px rgba(124,58,237,0.15)}
+.ecard:hover::before{opacity:1}
+.eicon{font-size:32px;margin-bottom:10px}
+.ename{font-weight:800;font-size:15px;margin-bottom:3px}
+.edesc{font-size:10px;color:var(--t2);margin-bottom:8px}
+.ebadge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:0.5px}
+.bf{background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.2)}
+.bp{background:rgba(124,58,237,0.15);color:#a78bfa;border:1px solid rgba(124,58,237,0.2)}
+.be{background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.2)}
+/* FEATURES */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.fcard{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:20px;transition:all 0.2s;position:relative;overflow:hidden}
+.fcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--pg);opacity:0;transition:opacity 0.3s}
+.fcard:hover{border-color:rgba(124,58,237,0.4);transform:translateY(-2px)}
+.fcard:hover::after{opacity:1}
+.fi{font-size:26px;margin-bottom:12px}
+.ft{font-weight:700;margin-bottom:6px;font-size:13px}
+.fd{font-size:12px;color:var(--t2);line-height:1.7}
+/* PRICING */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px}
+.pcard{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:26px;text-align:center;position:relative;transition:all 0.3s}
+.pcard:hover{transform:translateY(-3px)}
+.pcard.pop{border-color:rgba(124,58,237,0.5);box-shadow:0 0 40px rgba(124,58,237,0.12)}
+.pbadge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--pg);color:white;padding:3px 14px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
+.pname{font-size:11px;color:var(--t2);margin-bottom:8px;text-transform:uppercase;letter-spacing:1.5px}
+.pamount{font-size:36px;font-weight:900;margin-bottom:4px;letter-spacing:-1px}
+.pamount span{font-size:13px;font-weight:400;color:var(--t2)}
+.pper{font-size:11px;color:var(--t2);margin-bottom:20px}
+.plist{list-style:none;margin-bottom:20px;text-align:left}
 .plist li{padding:7px 0;border-bottom:1px solid var(--bd);font-size:12px;display:flex;align-items:center;gap:7px}
 .plist li:last-child{border:none}
-.ck{color:#10b981}.cx{color:#ef4444}
-.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;margin-top:35px}
-.fcard{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:18px}
-.fi{font-size:26px;margin-bottom:10px}
-.ft{font-weight:700;margin-bottom:6px;font-size:14px}
-.fd{font-size:12px;color:var(--t2);line-height:1.6}
-.stats{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:35px 20px;margin:35px 0}
-.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;max-width:650px;margin:0 auto;text-align:center}
-.snum{font-size:30px;font-weight:800;background:linear-gradient(135deg,#6366f1,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.slabel{font-size:11px;color:var(--t2);margin-top:4px}
-footer{background:var(--bg2);border-top:1px solid var(--bd);padding:25px 20px;text-align:center;color:var(--t2);font-size:12px}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.87);z-index:2000;align-items:center;justify-content:center;padding:15px;overflow-y:auto}
+.ck{color:#34d399}.cx{color:var(--r)}
+/* MODALS */
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:2000;align-items:center;justify-content:center;padding:15px}
 .modal.active{display:flex}
-.mbox{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:28px;width:100%;max-width:390px;margin:auto}
-.mtitle{font-size:20px;font-weight:700;margin-bottom:4px}
+.mbox{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:28px;width:100%;max-width:390px;animation:min 0.25s ease}
+@keyframes min{from{opacity:0;transform:scale(0.93) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.mtitle{font-size:20px;font-weight:800;margin-bottom:5px}
 .msub{color:var(--t2);font-size:12px;margin-bottom:22px}
 .ig{margin-bottom:13px}
 .ig label{display:block;font-size:12px;margin-bottom:5px;color:var(--t2)}
-.ig input{width:100%;padding:11px 14px;background:var(--bg3);border:1px solid var(--bd);border-radius:9px;color:var(--t);font-family:'Inter',sans-serif;font-size:13px;outline:none}
+.ig input{width:100%;padding:12px 14px;background:var(--bg3);border:1px solid var(--bd);border-radius:10px;color:var(--t);font-family:'Inter',sans-serif;font-size:13px;outline:none;transition:border 0.2s}
 .ig input:focus{border-color:var(--p)}
 .mfooter{margin-top:12px;text-align:center;font-size:12px;color:var(--t2)}
-.mfooter a{color:var(--p);cursor:pointer}
-.errmsg{color:#ef4444;font-size:11px;margin-top:8px;display:none;padding:7px;background:rgba(239,68,68,0.08);border-radius:7px}
-.closem{float:right;cursor:pointer;font-size:22px;line-height:1;background:none;border:none;color:var(--t2)}
-.dash{display:none;min-height:100vh;padding-top:70px}
-.dlayout{display:flex;min-height:calc(100vh - 70px)}
-.sidebar{width:210px;background:var(--bg2);border-right:1px solid var(--bd);padding:18px;position:fixed;height:calc(100vh - 70px);overflow-y:auto;top:70px;left:0}
-.sitem{display:flex;align-items:center;gap:9px;padding:11px 13px;border-radius:9px;cursor:pointer;margin-bottom:4px;font-size:13px;color:var(--t2);transition:all 0.2s}
-.sitem:hover,.sitem.active{background:rgba(99,102,241,0.1);color:var(--p)}
-.dcontent{margin-left:210px;flex:1;padding:22px}
-.dtitle{font-size:20px;font-weight:700;margin-bottom:4px}
-.dsub{color:var(--t2);font-size:13px;margin-bottom:22px}
-.plbadge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700}
-.pl-free{background:rgba(16,185,129,0.1);color:#10b981}
-.pl-pro{background:rgba(99,102,241,0.1);color:#6366f1}
-.pl-elite{background:rgba(245,158,11,0.1);color:#f59e0b}
-.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:18px;font-size:13px;color:var(--t2);flex-wrap:wrap}
-.breadcrumb span{cursor:pointer;color:var(--p)}
-.breadcrumb span:hover{text-decoration:underline}
-.slist{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:18px}
-.scard-item{background:var(--bg2);border:1px solid var(--bd);border-radius:11px;padding:15px;cursor:pointer;transition:all 0.2s;text-align:left}
-.scard-item:hover{border-color:var(--p);background:rgba(99,102,241,0.05)}
-.scard-item h3{font-size:14px;font-weight:600;margin-bottom:4px}
-.scard-item p{font-size:11px;color:var(--t2)}
-.chatbox{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
-.cmodes{display:flex;gap:7px;padding:13px;border-bottom:1px solid var(--bd);flex-wrap:wrap}
+.mfooter a{color:#a78bfa;cursor:pointer}
+.errmsg{color:var(--r);font-size:11px;margin-top:8px;display:none;padding:7px 10px;background:rgba(239,68,68,0.08);border-radius:8px}
+.closem{float:right;cursor:pointer;font-size:24px;line-height:1;background:none;border:none;color:var(--t2)}
+/* DASHBOARD */
+.dash{display:none;padding-top:60px;min-height:100vh}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--bd);padding:8px 16px;display:flex;gap:4px;align-items:center;overflow-x:auto;flex-wrap:wrap}
+.uinfo{display:flex;align-items:center;gap:8px;padding:5px 10px;margin-right:auto;flex-shrink:0}
+.titem{padding:7px 12px;border-radius:9px;cursor:pointer;font-size:12px;color:var(--t2);transition:all 0.2s;white-space:nowrap;border:1px solid transparent;flex-shrink:0}
+.titem:hover{background:rgba(124,58,237,0.1);color:#a78bfa;border-color:rgba(124,58,237,0.2)}
+.titem.active{background:rgba(124,58,237,0.12);color:#a78bfa;border-color:rgba(124,58,237,0.25)}
+.titem.red:hover{background:rgba(239,68,68,0.1);color:var(--r)}
+.plbadge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:0.5px}
+.pl-free{background:rgba(16,185,129,0.15);color:#34d399}
+.pl-pro{background:rgba(124,58,237,0.15);color:#a78bfa}
+.pl-elite{background:rgba(245,158,11,0.15);color:#fbbf24}
+.dcontent{padding:16px;max-width:980px;margin:0 auto}
+/* STREAK BAR */
+.sbar{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.si{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600}
+.xpb{height:5px;background:var(--bg3);border-radius:3px;flex:1;min-width:80px}
+.xpf{height:100%;background:var(--pg);border-radius:3px;transition:width 0.6s ease}
+/* BREADCRUMB */
+.bc{display:flex;align-items:center;gap:6px;margin-bottom:14px;font-size:12px;color:var(--t2);flex-wrap:wrap;padding:10px 14px;background:var(--bg2);border:1px solid var(--bd);border-radius:10px}
+.bc span{cursor:pointer;color:#a78bfa}
+.bc span:hover{text-decoration:underline}
+/* LISTS */
+.slist{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-bottom:16px}
+.sc{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all 0.2s;position:relative}
+.sc:hover{border-color:rgba(124,58,237,0.5);background:rgba(124,58,237,0.04);transform:translateY(-1px)}
+.sc h3{font-size:12px;font-weight:700;margin-bottom:3px}
+.sc p{font-size:10px;color:var(--t2)}
+.sc-arrow{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--t2);font-size:12px}
+/* CHAT */
+.chatbox{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.4)}
+.chdr{padding:14px 18px;border-bottom:1px solid var(--bd);background:var(--bg3);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.chdr-l h3{font-size:14px;font-weight:700;margin-bottom:2px}
+.chdr-l p{font-size:11px;color:var(--t2)}
+.chdr-r{display:flex;gap:6px}
+.ibtn{padding:7px 9px;background:var(--bg4);border:1px solid var(--bd);border-radius:8px;cursor:pointer;font-size:13px;transition:all 0.2s;color:var(--t2);line-height:1}
+.ibtn:hover{border-color:var(--p);color:var(--t)}
+.cmodes{display:flex;gap:5px;padding:10px 14px;border-bottom:1px solid var(--bd);flex-wrap:wrap;background:var(--bg3)}
 .mbtn{padding:6px 12px;border-radius:18px;border:1px solid var(--bd);background:transparent;color:var(--t2);font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s}
-.mbtn.active{background:var(--p);border-color:var(--p);color:white}
-.cmsgs{height:380px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:13px}
-.msg{max-width:85%;padding:11px 14px;border-radius:11px;font-size:13px;line-height:1.8}
-.mu{background:linear-gradient(135deg,#6366f1,#4f46e5);color:white;align-self:flex-end;border-radius:11px 11px 3px 11px}
-.ma{background:var(--bg3);border:1px solid var(--bd);align-self:flex-start;border-radius:11px 11px 11px 3px}
-.tbox{background:rgba(99,102,241,0.08);border-left:3px solid var(--p);padding:9px;margin-top:9px;border-radius:4px;font-style:italic;font-size:12px}
-.ciarea{padding:13px;border-top:1px solid var(--bd);display:flex;gap:9px}
-.cinput{flex:1;padding:11px 14px;background:var(--bg3);border:1px solid var(--bd);border-radius:9px;color:var(--t);font-family:'Inter',sans-serif;font-size:13px;outline:none;resize:none;height:46px}
-.cinput:focus{border-color:var(--p)}
-.sbtn{padding:11px 18px;background:linear-gradient(135deg,#6366f1,#4f46e5);border:none;border-radius:9px;color:white;cursor:pointer;font-size:17px}
-.ldots{display:inline-flex;gap:4px;padding:11px 14px}
-.dot{width:7px;height:7px;background:var(--t2);border-radius:50%;animation:bounce 1.4s infinite}
+.mbtn:hover{border-color:var(--p);color:#a78bfa}
+.mbtn.active{background:var(--pg);border-color:transparent;color:white;box-shadow:0 2px 10px rgba(124,58,237,0.4)}
+.cmsgs{height:400px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:13px}
+.msg{max-width:90%;padding:12px 15px;border-radius:14px;font-size:13px;line-height:1.8;word-break:break-word;animation:mi 0.25s ease}
+@keyframes mi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.mu{background:var(--pg);color:white;align-self:flex-end;border-radius:14px 14px 4px 14px;box-shadow:0 4px 15px rgba(124,58,237,0.3)}
+.ma{background:var(--bg3);border:1px solid var(--bd);align-self:flex-start;border-radius:14px 14px 14px 4px}
+.tbox{background:rgba(124,58,237,0.08);border-left:3px solid #7c3aed;padding:10px 13px;margin:10px 0 3px;border-radius:0 10px 10px 0;font-size:12px;color:#c4b5fd;line-height:1.6}
+.sbox{background:rgba(245,158,11,0.08);border-left:3px solid var(--y);padding:10px 13px;margin:10px 0 3px;border-radius:0 10px 10px 0;font-size:12px;color:#fbbf24;line-height:1.6}
+.ciarea{padding:12px 14px;border-top:1px solid var(--bd);background:var(--bg3);display:flex;gap:8px;align-items:flex-end}
+.cinput{flex:1;padding:11px 14px;background:var(--bg4);border:1px solid var(--bd);border-radius:12px;color:var(--t);font-family:'Inter',sans-serif;font-size:13px;outline:none;resize:none;min-height:46px;max-height:130px;transition:border 0.2s;line-height:1.5}
+.cinput:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(124,58,237,0.1)}
+.sbtn{padding:11px 18px;background:var(--pg);border:none;border-radius:12px;color:white;cursor:pointer;font-size:16px;box-shadow:0 4px 15px rgba(124,58,237,0.4);transition:all 0.2s}
+.sbtn:hover{transform:scale(1.05)}
+.ubtn{padding:11px 13px;background:var(--bg4);border:1px solid var(--bd);border-radius:12px;color:var(--t2);cursor:pointer;font-size:15px;transition:all 0.2s}
+.ubtn:hover{border-color:var(--p);color:#a78bfa}
+.ldots{display:inline-flex;gap:5px;padding:12px 15px;align-items:center}
+.dot{width:8px;height:8px;background:var(--t2);border-radius:50%;animation:b 1.4s infinite}
 .dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
-@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-9px)}}
-.sett-card{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:22px;max-width:480px}
-.upgrade-banner{background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(14,165,233,0.1));border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:15px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap}
-@media(max-width:700px){.sidebar{width:100%;height:auto;position:relative;top:0}.dlayout{flex-direction:column}.dcontent{margin-left:0}.sgrid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:28px}}
+@keyframes b{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-8px)}}
+/* SETTINGS */
+.scard{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:20px;margin-bottom:14px}
+.scard h3{font-size:13px;font-weight:700;margin-bottom:16px;color:#a78bfa;text-transform:uppercase;letter-spacing:1px}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tbtn{padding:11px 8px;border-radius:10px;border:2px solid var(--bd);cursor:pointer;font-size:11px;font-weight:600;transition:all 0.2s;text-align:center;background:var(--bg3);color:var(--t)}
+.tbtn:hover{border-color:var(--p)}
+.tbtn.active{border-color:var(--p);box-shadow:0 0 10px rgba(124,58,237,0.3)}
+.pgrid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+/* HISTORY */
+.hi{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:8px;cursor:pointer;transition:all 0.2s}
+.hi:hover{border-color:rgba(124,58,237,0.4)}
+.hi-t{font-size:13px;font-weight:600;margin-bottom:3px}
+.hi-m{font-size:11px;color:var(--t2)}
+/* LIMIT BANNER */
+.lbanner{background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(37,99,235,0.1));border:1px solid rgba(124,58,237,0.3);border-radius:12px;padding:13px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--bd);padding:24px 20px;text-align:center;color:var(--t2);font-size:12px}
+@media(max-width:500px){
+  .hero h1{font-size:28px}
+  .sgrid{grid-template-columns:repeat(2,1fr)}
+}
 </style>
 </head>
 <body>
-<nav id="navbar">
-  <div class="logo">Edun</div>
-  <div class="nav-btns" id="navBtns">
+
+<nav>
+  <div class="logo">⚡ Edun AI</div>
+  <div id="navBtns" style="display:flex;gap:8px">
     <button class="btn btn-o" onclick="showModal('login')">Login</button>
-    <button class="btn btn-p" onclick="showModal('register')">Start Free</button>
+    <button class="btn btn-p" onclick="showModal('register')">Start Free 🚀</button>
   </div>
 </nav>
 
+<!-- LANDING -->
 <div id="landing">
   <div class="hero">
-    <div class="hbadge">⚡ AI-Powered Exam Preparation India</div>
-    <h1>Crack Any Exam With<br/><span>Your Personal AI Tutor</span></h1>
-    <p>Complete NCERT syllabus, chapter-wise AI tutoring, memory tricks, mock tests and exam strategy. From 10th Board to JEE and NEET.</p>
+    <div class="hero-glow"></div>
+    <div class="badge">🏆 India's Most Advanced AI Exam Tutor</div>
+    <h1>Stop Memorising.<br/><span class="grad">Start Understanding.</span></h1>
+    <p>Complete NCERT syllabus. Chapter-wise AI tutoring. Photo doubt solver. Memory tricks that stick. Your unfair advantage in every exam. 🎯</p>
     <div class="hbtns">
-      <button class="btn btn-p" style="font-size:15px;padding:13px 28px" onclick="showModal('register')">Start Free Today →</button>
-      <button class="btn btn-o" style="font-size:15px;padding:13px 28px" onclick="document.getElementById('exams').scrollIntoView({behavior:'smooth'})">View Exams</button>
+      <button class="btn btn-p" style="font-size:14px;padding:13px 28px" onclick="showModal('register')">Start Free — No Card Needed 🎉</button>
+      <button class="btn btn-o" style="font-size:14px;padding:13px 28px" onclick="document.getElementById('lexams').scrollIntoView({behavior:'smooth'})">Explore Exams →</button>
+    </div>
+    <div class="hf-row">
+      <div class="hf">✅ NCERT Accurate</div>
+      <div class="hf">📸 Photo Solver</div>
+      <div class="hf">🧠 Memory Tricks</div>
+      <div class="hf">🔥 Streak System</div>
+      <div class="hf">🎯 Previous Year Qs</div>
     </div>
   </div>
 
   <div class="stats">
     <div class="sgrid">
-      <div><div class="snum">6+</div><div class="slabel">Exams Covered</div></div>
-      <div><div class="snum">NCERT</div><div class="slabel">Syllabus Based</div></div>
+      <div><div class="snum">6+</div><div class="slabel">Exams</div></div>
+      <div><div class="snum">NCERT</div><div class="slabel">Accurate</div></div>
       <div><div class="snum">24/7</div><div class="slabel">Available</div></div>
-      <div><div class="snum">₹59</div><div class="slabel">Starting Price</div></div>
+      <div><div class="snum">₹99</div><div class="slabel">Starting</div></div>
     </div>
   </div>
-
-  <div class="sec" id="exams">
-    <h2>Choose Your Exam</h2>
-    <p class="sub">Complete NCERT syllabus with chapter-wise AI tutoring</p>
+<div class="sec" id="lexams">
+    <div class="sec-title">Choose Your Exam 🎯</div>
+    <div class="sec-sub">Every exam. Every chapter. Complete NCERT syllabus. AI that knows the exam inside out.</div>
     <div class="egrid">
-      <div class="ecard" onclick="landingExam('10th CBSE')"><div class="eicon">📚</div><div class="ename">10th CBSE</div><div class="edesc">Board Exam</div><span class="ebadge bf">FREE TRIAL</span></div>
-      <div class="ecard" onclick="landingExam('12th CBSE')"><div class="eicon">🎓</div><div class="ename">12th CBSE</div><div class="edesc">Board Exam</div><span class="ebadge bf">FREE TRIAL</span></div>
-      <div class="ecard" onclick="landingExam('SSC CGL')"><div class="eicon">🏛️</div><div class="ename">SSC CGL</div><div class="edesc">Govt Job</div><span class="ebadge bp">PRO</span></div>
-      <div class="ecard" onclick="landingExam('NEET')"><div class="eicon">🔬</div><div class="ename">NEET</div><div class="edesc">Medical</div><span class="ebadge bp">PRO</span></div>
-      <div class="ecard" onclick="landingExam('JEE')"><div class="eicon">⚙️</div><div class="ename">JEE</div><div class="edesc">Engineering</div><span class="ebadge be">ELITE</span></div>
-      <div class="ecard" onclick="landingExam('CUET')"><div class="eicon">🏫</div><div class="ename">CUET</div><div class="edesc">Central Uni</div><span class="ebadge be">ELITE</span></div>
+      <div class="ecard" onclick="landingExam('10th CBSE')"><div class="eicon">📚</div><div class="ename">10th CBSE</div><div class="edesc">Class 10 Board Exam</div><span class="ebadge bf">FREE TRIAL</span></div>
+      <div class="ecard" onclick="landingExam('12th CBSE')"><div class="eicon">🎓</div><div class="ename">12th CBSE</div><div class="edesc">Class 12 Board Exam</div><span class="ebadge bf">FREE TRIAL</span></div>
+      <div class="ecard" onclick="landingExam('SSC CGL')"><div class="eicon">🏛️</div><div class="ename">SSC CGL</div><div class="edesc">Combined Graduate Level</div><span class="ebadge bp">PRO • ₹99/mo</span></div>
+      <div class="ecard" onclick="landingExam('NEET')"><div class="eicon">🔬</div><div class="ename">NEET</div><div class="edesc">Medical Entrance</div><span class="ebadge bp">PRO • ₹99/mo</span></div>
+      <div class="ecard" onclick="landingExam('JEE')"><div class="eicon">⚙️</div><div class="ename">JEE</div><div class="edesc">Engineering Entrance</div><span class="ebadge be">ELITE • ₹199/mo</span></div>
+      <div class="ecard" onclick="landingExam('CUET')"><div class="eicon">🏫</div><div class="ename">CUET</div><div class="edesc">Central University Entrance</div><span class="ebadge be">ELITE • ₹199/mo</span></div>
     </div>
   </div>
 
   <div class="sec">
-    <h2>Everything You Need to Crack Your Exam</h2>
-    <p class="sub">Complete chapter-wise preparation powered by AI</p>
+    <div class="sec-title">Why Edun Beats Every Other App 💜</div>
+    <div class="sec-sub">We built what students actually needed — not what investors wanted</div>
     <div class="fgrid">
-      <div class="fcard"><div class="fi">📖</div><div class="ft">NCERT Chapter Wise</div><div class="fd">Complete syllabus mapped to NCERT chapters with all topics covered</div></div>
-      <div class="fcard"><div class="fi">🧠</div><div class="ft">Memory Tricks</div><div class="fd">Smart mnemonics and tricks to remember complex topics instantly</div></div>
-      <div class="fcard"><div class="fi">❓</div><div class="ft">Mock Tests</div><div class="fd">Exam-pattern MCQs with instant explanations and analysis</div></div>
-      <div class="fcard"><div class="fi">📅</div><div class="ft">Previous Year Qs</div><div class="fd">Most repeated questions with patterns and detailed solutions</div></div>
-      <div class="fcard"><div class="fi">⚡</div><div class="ft">Quick Revision</div><div class="fd">Last minute bullet-point notes and expected questions</div></div>
-      <div class="fcard"><div class="fi">🎯</div><div class="ft">Exam Strategy</div><div class="fd">Time management, marking scheme and scoring maximization</div></div>
+      <div class="fcard"><div class="fi">📖</div><div class="ft">100% NCERT Mapped</div><div class="fd">Every chapter, topic and concept matched exactly to NCERT. No random content. Just what comes in your exam.</div></div>
+      <div class="fcard"><div class="fi">📸</div><div class="ft">Photo Doubt Solver</div><div class="fd">Stuck on a question? Click a photo from your textbook and get instant step-by-step solution with explanation!</div></div>
+      <div class="fcard"><div class="fi">🧠</div><div class="ft">Memory Tricks That Work</div><div class="fd">Mnemonics, stories, acronyms and visual tricks that make you remember concepts for life — not just for exam day!</div></div>
+      <div class="fcard"><div class="fi">😄</div><div class="ft">AI That Gets You</div><div class="fd">Choose your tutor personality — fun and witty, strict coach, or caring big bro/sis. Study your way!</div></div>
+      <div class="fcard"><div class="fi">🔥</div><div class="ft">Streak & XP System</div><div class="fd">Daily streaks, XP points and level ups keep you coming back. Studying finally feels like a game you want to win!</div></div>
+      <div class="fcard"><div class="fi">🎯</div><div class="ft">Previous Year Questions</div><div class="fd">Exact patterns, frequently repeated questions and insider tips about what examiners actually test every year.</div></div>
     </div>
   </div>
-  <div class="sec" id="pricing">
-    <h2>Simple Transparent Pricing</h2>
-    <p class="sub">No hidden charges — cancel anytime</p>
-    <div class="pgrid">
+
+  <div class="sec">
+    <div class="sec-title">Pricing That Makes Sense 💰</div>
+    <div class="sec-sub">Less than a single coaching class. Available 24/7. Never judges your silly questions.</div>
+    <div class="pgrid" style="margin-top:30px">
       <div class="pcard">
-        <div class="pname">Starter</div>
+        <div class="pname">Free</div>
         <div class="pamount">₹0<span>/mo</span></div>
-        <div class="pper">Free forever — limited access</div>
+        <div class="pper">Forever free — limited access</div>
         <ul class="plist">
-          <li><span class="ck">✓</span>10th and 12th CBSE trial</li>
-          <li><span class="ck">✓</span>3 questions per day</li>
-          <li><span class="ck">✓</span>Basic explanations only</li>
+          <li><span class="ck">✓</span>10th &amp; 12th CBSE trial</li>
+          <li><span class="ck">✓</span>3 AI questions per day</li>
           <li><span class="cx">✗</span>Memory tricks</li>
-          <li><span class="cx">✗</span>Mock tests and PYQ</li>
-          <li><span class="cx">✗</span>SSC NEET JEE CUET</li>
+          <li><span class="cx">✗</span>Mock tests &amp; PYQ</li>
+          <li><span class="cx">✗</span>Photo doubt solver</li>
+          <li><span class="cx">✗</span>SSC, NEET, JEE, CUET</li>
         </ul>
-        <button class="btn btn-o" style="width:100%" onclick="showModal('register')">Try For Free</button>
+        <button class="btn btn-o" style="width:100%" onclick="showModal('register')">Try Free 😊</button>
       </div>
       <div class="pcard pop">
-        <div class="pbadge">⭐ Best Value</div>
+        <div class="pbadge">⭐ Most Popular</div>
         <div class="pname">Pro</div>
         <div class="pamount">₹99<span>/mo</span></div>
-        <div class="pper">10th, 12th, SSC CGL and NEET</div>
+        <div class="pper">10th, 12th, SSC &amp; NEET</div>
         <ul class="plist">
-          <li><span class="ck">✓</span>10th and 12th CBSE full</li>
-          <li><span class="ck">✓</span>SSC CGL and NEET</li>
-          <li><span class="ck">✓</span>Unlimited questions</li>
+          <li><span class="ck">✓</span>10th &amp; 12th CBSE FULL</li>
+          <li><span class="ck">✓</span>SSC CGL &amp; NEET</li>
+          <li><span class="ck">✓</span>Unlimited AI questions</li>
           <li><span class="ck">✓</span>All memory tricks</li>
-          <li><span class="ck">✓</span>Mock tests and PYQ</li>
-          <li><span class="ck">✓</span>Exam strategy sessions</li>
+          <li><span class="ck">✓</span>Mock tests &amp; PYQ</li>
+          <li><span class="ck">✓</span>Photo doubt solver 📸</li>
         </ul>
-        <button class="btn btn-p" style="width:100%" onclick="doUpgrade('pro')">Upgrade ₹99/mo →</button>
+        <button class="btn btn-p" style="width:100%" onclick="doUpgrade('pro')">Get Pro ₹99/mo 🚀</button>
       </div>
       <div class="pcard">
         <div class="pname">Elite</div>
         <div class="pamount">₹199<span>/mo</span></div>
-        <div class="pper">All 6 exams unlimited</div>
+        <div class="pper">All 6 exams + everything</div>
         <ul class="plist">
           <li><span class="ck">✓</span>Everything in Pro</li>
-          <li><span class="ck">✓</span>JEE and CUET full access</li>
+          <li><span class="ck">✓</span>JEE &amp; CUET full access</li>
           <li><span class="ck">✓</span>Advanced AI model</li>
           <li><span class="ck">✓</span>Priority support</li>
-          <li><span class="ck">✓</span>Download notes</li>
           <li><span class="ck">✓</span>Study planner</li>
+          <li><span class="ck">✓</span>Download notes</li>
         </ul>
-        <button class="btn btn-p" style="width:100%;background:linear-gradient(135deg,#f59e0b,#d97706)" onclick="doUpgrade('elite')">Upgrade ₹199/mo →</button>
+        <button class="btn btn-y" style="width:100%" onclick="doUpgrade('elite')">Get Elite ₹199/mo 👑</button>
       </div>
     </div>
   </div>
-<footer>
-    <p>© 2025 Edun • AI-Powered Exam Preparation • Made in India 🇮🇳</p>
-    <p style="margin-top:6px">support@edun.in • Privacy Policy • Terms of Use</p>
+  <footer>
+    <p>© 2025 Edun AI • India's Smartest Exam Preparation Platform 🇮🇳</p>
+    <p style="margin-top:6px">support@edun.in • Made with ❤️ for every Indian student</p>
+    <p style="margin-top:4px;font-size:11px">Follow us @edunai for free promo codes!</p>
   </footer>
 </div>
-
+<!-- DASHBOARD -->
 <div id="dash" class="dash">
-  <div class="dlayout">
-    <div class="sidebar">
+  <div class="topbar">
+    <div class="uinfo">
+      <span id="sbName" style="font-size:13px;font-weight:700">Student</span>
+      <span id="sbPlan" class="plbadge pl-free">FREE</span>
+    </div>
+    <div class="titem active" id="tab-home" onclick="showSec('home')">🏠 Home</div>
+    <div class="titem" id="tab-exams" onclick="showSec('exams')">📚 Exams</div>
+    <div class="titem" id="tab-history" onclick="showSec('history')">📜 History</div>
+    <div class="titem" id="tab-upgrade" onclick="showSec('upgrade')">👑 Upgrade</div>
+    <div class="titem" id="tab-settings" onclick="showSec('settings')">⚙️ Settings</div>
+    <div class="titem red" onclick="doLogout()">🚪 Exit</div>
+  </div>
+  <div class="dcontent">
+
+    <div id="sec-home">
+      <div class="sbar">
+        <div class="si">🔥 <span id="sc">0</span> day streak</div>
+        <div class="si">⭐ <span id="xc">0</span> XP</div>
+        <div class="si" style="font-size:11px;color:var(--t2)">Lv.<span id="lv">1</span></div>
+        <div class="xpb"><div class="xpf" id="xf" style="width:0%"></div></div>
+      </div>
       <div style="margin-bottom:18px">
-        <div style="font-weight:700;font-size:15px" id="sbName">Student</div>
-        <div id="sbPlan" class="plbadge pl-free" style="margin-top:5px">FREE</div>
+        <div style="font-size:20px;font-weight:800;margin-bottom:4px" id="wm">Welcome! 👋</div>
+        <div style="font-size:13px;color:var(--t2)" id="mm">Ready to outsmart your exam today? 😎</div>
       </div>
-      <div class="sitem active" onclick="showSec('home')"><span>🏠</span> Home</div>
-      <div class="sitem" onclick="showSec('exams')"><span>📚</span> All Exams</div>
-      <div class="sitem" onclick="showSec('upgrade')"><span>👑</span> Upgrade</div>
-      <div class="sitem" onclick="showSec('settings')"><span>⚙️</span> Settings</div>
-      <div class="sitem" style="color:var(--r);margin-top:auto" onclick="doLogout()"><span>🚪</span> Logout</div>
+      <div id="limitBanner" style="display:none" class="lbanner">
+        <span style="font-size:13px">⚡ Daily limit reached! Upgrade for unlimited studying 🚀</span>
+        <button class="btn btn-p" style="font-size:12px;padding:7px 14px" onclick="showSec('upgrade')">Upgrade Now</button>
+      </div>
+      <div class="egrid" id="homeGrid"></div>
     </div>
-    <div class="dcontent">
 
-      <div id="sec-home">
-        <div class="dtitle" id="welcomeMsg">Welcome! 👋</div>
-        <div class="dsub">Choose an exam to start studying</div>
-        <div id="freeLimitBanner" style="display:none" class="upgrade-banner">
-          <span style="font-size:13px">⚡ Daily limit reached! Upgrade for unlimited access</span>
-          <button class="btn btn-p" style="font-size:12px;padding:7px 14px" onclick="showSec('upgrade')">Upgrade Now</button>
-        </div>
-        <div class="egrid" id="homeGrid"></div>
+    <div id="sec-exams" style="display:none">
+      <div style="margin-bottom:18px">
+        <div style="font-size:20px;font-weight:800;margin-bottom:4px">All Exams 📚</div>
+        <div style="font-size:13px;color:var(--t2)">Pick your exam and let's crack it! 💪</div>
       </div>
-
-      <div id="sec-exams" style="display:none">
-        <div class="dtitle">All Exams</div>
-        <div class="dsub">Select exam to start chapter-wise preparation</div>
-        <div class="egrid" id="allGrid"></div>
-      </div>
-
-      <div id="sec-study" style="display:none">
-        <div class="breadcrumb" id="breadcrumb"></div>
-        <div id="studyContent"></div>
-      </div>
-
-      <div id="sec-upgrade" style="display:none">
-        <div class="dtitle">Upgrade Your Plan</div>
-        <div class="dsub">Unlock full access to all exams and features</div>
-        <div class="pgrid">
-          <div class="pcard">
-            <div class="pname">Starter</div>
-            <div class="pamount">₹0<span>/mo</span></div>
-            <ul class="plist">
-              <li><span class="ck">✓</span>10th 12th trial only</li>
-              <li><span class="ck">✓</span>3 questions per day</li>
-              <li><span class="cx">✗</span>Memory tricks</li>
-              <li><span class="cx">✗</span>Mock tests</li>
-            </ul>
-            <button class="btn btn-o" style="width:100%" disabled>Current Plan</button>
-          </div>
-          <div class="pcard pop">
-            <div class="pbadge">⭐ Best Value</div>
-            <div class="pname">Pro</div>
-            <div class="pamount">₹99<span>/mo</span></div>
-            <ul class="plist">
-              <li><span class="ck">✓</span>10th 12th full access</li>
-              <li><span class="ck">✓</span>SSC CGL and NEET</li>
-              <li><span class="ck">✓</span>All features unlocked</li>
-              <li><span class="ck">✓</span>Unlimited questions</li>
-            </ul>
-            <button class="btn btn-p" style="width:100%" onclick="doUpgrade('pro')">Upgrade ₹99/mo →</button>
-          </div>
-          <div class="pcard">
-            <div class="pname">Elite</div>
-            <div class="pamount">₹199<span>/mo</span></div>
-            <ul class="plist">
-              <li><span class="ck">✓</span>All 6 exams</li>
-              <li><span class="ck">✓</span>JEE and CUET</li>
-              <li><span class="ck">✓</span>Advanced AI model</li>
-              <li><span class="ck">✓</span>Priority support</li>
-            </ul>
-            <button class="btn btn-p" style="width:100%;background:linear-gradient(135deg,#f59e0b,#d97706)" onclick="doUpgrade('elite')">Upgrade ₹199/mo →</button>
-          </div>
-        </div>
-      </div>
-
-<div id="sec-settings" style="display:none">
-        <div class="dtitle">Settings</div>
-        <div class="dsub">Your account details</div>
-        <div class="sett-card">
-          <div style="margin-bottom:15px"><div style="font-size:12px;color:var(--t2);margin-bottom:4px">Full Name</div><div style="font-weight:600" id="setName">-</div></div>
-          <div style="margin-bottom:15px"><div style="font-size:12px;color:var(--t2);margin-bottom:4px">Email</div><div style="font-weight:600" id="setEmail">-</div></div>
-          <div style="margin-bottom:20px"><div style="font-size:12px;color:var(--t2);margin-bottom:4px">Current Plan</div><div id="setPlan" class="plbadge pl-free">FREE</div></div>
-          <button class="btn btn-p" style="width:100%;margin-bottom:10px" onclick="showSec('upgrade')">Upgrade Plan</button>
-          <button class="btn btn-o" style="width:100%;color:var(--r);border-color:var(--r)" onclick="doLogout()">Logout</button>
-        </div>
-      </div>
-
+      <div class="egrid" id="allGrid"></div>
     </div>
+
+    <div id="sec-study" style="display:none">
+      <div class="bc" id="bc">🏠 Home</div>
+      <div id="studyContent"></div>
+    </div>
+
+<div id="sec-history" style="display:none">
+      <div style="margin-bottom:18px">
+        <div style="font-size:20px;font-weight:800;margin-bottom:4px">Study History 📜</div>
+        <div style="font-size:13px;color:var(--t2)">Your recent study sessions</div>
+      </div>
+      <div id="histList"></div>
+    </div>
+
+    <div id="sec-upgrade" style="display:none">
+      <div style="margin-bottom:18px">
+        <div style="font-size:20px;font-weight:800;margin-bottom:4px">Upgrade Plan 👑</div>
+        <div style="font-size:13px;color:var(--t2)">Unlock your full potential</div>
+      </div>
+      <div class="pgrid">
+        <div class="pcard">
+          <div class="pname">Free</div>
+          <div class="pamount">₹0<span>/mo</span></div>
+          <ul class="plist">
+            <li><span class="ck">✓</span>10th 12th trial</li>
+            <li><span class="ck">✓</span>3 questions/day</li>
+            <li><span class="cx">✗</span>Memory tricks</li>
+            <li><span class="cx">✗</span>Photo solver</li>
+          </ul>
+          <button class="btn btn-o" style="width:100%" disabled>Current Plan</button>
+        </div>
+        <div class="pcard pop">
+          <div class="pbadge">⭐ Most Popular</div>
+          <div class="pname">Pro</div>
+          <div class="pamount">₹99<span>/mo</span></div>
+          <ul class="plist">
+            <li><span class="ck">✓</span>10th 12th FULL</li>
+            <li><span class="ck">✓</span>SSC CGL &amp; NEET</li>
+            <li><span class="ck">✓</span>All features unlocked</li>
+            <li><span class="ck">✓</span>Photo doubt solver 📸</li>
+          </ul>
+          <button class="btn btn-p" style="width:100%" onclick="doUpgrade('pro')">Get Pro ₹99/mo 🚀</button>
+        </div>
+        <div class="pcard">
+          <div class="pname">Elite</div>
+          <div class="pamount">₹199<span>/mo</span></div>
+          <ul class="plist">
+            <li><span class="ck">✓</span>All 6 exams</li>
+            <li><span class="ck">✓</span>JEE &amp; CUET</li>
+            <li><span class="ck">✓</span>Advanced AI</li>
+            <li><span class="ck">✓</span>Priority support</li>
+          </ul>
+          <button class="btn btn-y" style="width:100%" onclick="doUpgrade('elite')">Get Elite ₹199/mo 👑</button>
+        </div>
+      </div>
+      <div style="margin-top:18px;background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:18px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:10px">🎁 Have a Promo Code?</div>
+        <div style="display:flex;gap:8px">
+          <input id="pin" type="text" placeholder="e.g. FOLLOW7 or EDUNLAUNCH" style="flex:1;padding:11px 14px;background:var(--bg3);border:1px solid var(--bd);border-radius:10px;color:var(--t);font-size:13px;outline:none;font-family:Inter,sans-serif"/>
+          <button class="btn btn-p" onclick="applyPromo()">Apply ✨</button>
+        </div>
+        <div style="font-size:11px;color:var(--t2);margin-top:8px">Follow @edunai on Instagram for free promo codes! 🎉</div>
+      </div>
+    </div>
+
+    <div id="sec-settings" style="display:none">
+      <div style="margin-bottom:18px"><div style="font-size:20px;font-weight:800">Settings ⚙️</div></div>
+      <div class="scard">
+        <h3>👤 Account</h3>
+        <div style="margin-bottom:10px"><div style="font-size:11px;color:var(--t2);margin-bottom:3px">Name</div><div style="font-weight:700" id="sn">-</div></div>
+        <div style="margin-bottom:10px"><div style="font-size:11px;color:var(--t2);margin-bottom:3px">Email</div><div style="font-weight:600;font-size:13px" id="se">-</div></div>
+        <div style="margin-bottom:16px"><div style="font-size:11px;color:var(--t2);margin-bottom:5px">Plan</div><div id="sp" class="plbadge pl-free">FREE</div></div>
+        <button class="btn btn-p" style="width:100%;margin-bottom:8px" onclick="showSec('upgrade')">Upgrade Plan 👑</button>
+        <button class="btn btn-o" style="width:100%;color:var(--r);border-color:var(--r)" onclick="doLogout()">Logout 🚪</button>
+      </div>
+<div class="scard">
+        <h3>🎨 Theme</h3>
+        <div class="tgrid">
+          <div class="tbtn active" onclick="setTheme('dark',this)">🌙 Dark</div>
+          <div class="tbtn" onclick="setTheme('purple',this)">💜 Purple</div>
+          <div class="tbtn" onclick="setTheme('ocean',this)">🌊 Ocean</div>
+          <div class="tbtn" onclick="setTheme('forest',this)">🌿 Forest</div>
+          <div class="tbtn" onclick="setTheme('red',this)">🔴 Crimson</div>
+          <div class="tbtn" onclick="setTheme('light',this)">☀️ Light</div>
+        </div>
+      </div>
+      <div class="scard">
+        <h3>🤖 AI Personality</h3>
+        <div class="pgrid2">
+          <div class="tbtn active" id="ai-fun" onclick="setAI('fun',this)">😄 Fun &amp; Witty</div>
+          <div class="tbtn" id="ai-serious" onclick="setAI('serious',this)">🎓 Serious Tutor</div>
+          <div class="tbtn" id="ai-strict" onclick="setAI('strict',this)">💪 Strict Coach</div>
+          <div class="tbtn" id="ai-bro" onclick="setAI('bro',this)">🤗 Big Bro/Sis</div>
+        </div>
+      </div>
+      <div class="scard">
+        <h3>🗑️ Data Management</h3>
+        <button class="btn btn-o" style="width:100%;color:var(--r);border-color:var(--r)" onclick="clearHist()">Clear All Chat History</button>
+      </div>
+    </div>
+
   </div>
 </div>
 
+<!-- MODALS -->
 <div class="modal" id="loginModal">
   <div class="mbox">
     <button class="closem" onclick="closeModal('login')">×</button>
     <div class="mtitle">Welcome back! 👋</div>
-    <div class="msub">Login to continue your preparation</div>
+    <div class="msub">Login and let's get that rank! 🎯</div>
     <div class="ig"><label>Email</label><input type="email" id="lEmail" placeholder="your@email.com"/></div>
-    <div class="ig"><label>Password</label><input type="password" id="lPass" placeholder="••••••••"/></div>
+    <div class="ig"><label>Password</label><input type="password" id="lPass" placeholder="••••••••" onkeypress="if(event.key==='Enter')doLogin()"/></div>
     <div class="errmsg" id="lErr">Invalid credentials</div>
     <button class="btn btn-p" style="width:100%;margin-top:5px" onclick="doLogin()">Login →</button>
-    <div class="mfooter">No account? <a onclick="switchM('login','register')">Register free</a></div>
+    <div class="mfooter">No account? <a onclick="switchM('login','register')">Register free 🚀</a></div>
   </div>
 </div>
 
 <div class="modal" id="registerModal">
   <div class="mbox">
     <button class="closem" onclick="closeModal('register')">×</button>
-    <div class="mtitle">Create Account 🚀</div>
-    <div class="msub">Start your free preparation journey</div>
+    <div class="mtitle">Join Edun AI 🚀</div>
+    <div class="msub">Your rank improvement starts right now!</div>
     <div class="ig"><label>Full Name</label><input type="text" id="rName" placeholder="Your name"/></div>
     <div class="ig"><label>Email</label><input type="email" id="rEmail" placeholder="your@email.com"/></div>
-    <div class="ig"><label>Password</label><input type="password" id="rPass" placeholder="Create password (min 6 chars)"/></div>
-    <div class="errmsg" id="rErr">Error creating account</div>
+    <div class="ig"><label>Password</label><input type="password" id="rPass" placeholder="Min 6 characters" onkeypress="if(event.key==='Enter')doRegister()"/></div>
+    <div class="errmsg" id="rErr">Error</div>
     <button class="btn btn-p" style="width:100%;margin-top:5px" onclick="doRegister()">Create Free Account →</button>
     <div class="mfooter">Have account? <a onclick="switchM('register','login')">Login here</a></div>
   </div>
 </div>
+
 <div class="modal" id="payModal">
   <div class="mbox">
     <button class="closem" onclick="closeModal('pay')">×</button>
-    <div class="mtitle">Upgrade Plan 👑</div>
-    <div class="msub" id="paySub">Complete payment to unlock features</div>
-    <div style="background:var(--bg3);border-radius:11px;padding:20px;margin-bottom:18px;text-align:center;border:1px solid var(--bd)">
-      <div style="font-size:12px;color:var(--t2);margin-bottom:5px">Pay via UPI</div>
-      <div style="font-size:32px;font-weight:800;margin:8px 0;color:var(--p)" id="payAmt">₹59</div>
-      <div style="font-size:22px;font-weight:700;color:var(--t);padding:10px;background:var(--bg2);border-radius:8px;letter-spacing:1px">edun@ybl</div>
-      <div style="font-size:11px;color:var(--t2);margin-top:8px">Send exact amount to above UPI ID<br/>Then enter transaction ID below</div>
+    <div class="mtitle">Almost There! 👑</div>
+    <div class="msub" id="paySub">One payment away from unlimited access!</div>
+    <div style="background:var(--bg3);border-radius:14px;padding:20px;margin-bottom:16px;text-align:center;border:1px solid var(--bd)">
+      <div style="font-size:11px;color:var(--t2);margin-bottom:6px">📱 Pay via UPI</div>
+      <div style="font-size:36px;font-weight:900;background:var(--pg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px" id="payAmt">₹99</div>
+      <div style="font-size:18px;font-weight:800;padding:12px 16px;background:var(--bg2);border-radius:10px;border:1px solid rgba(124,58,237,0.3);letter-spacing:1px;color:#a78bfa">8448334697@ybl</div>
+      <div style="font-size:11px;color:var(--t2);margin-top:8px">Send exact amount → Copy transaction ID → Paste below</div>
     </div>
-    <div class="ig"><label>UPI Transaction ID (from payment app)</label><input type="text" id="txnId" placeholder="e.g. 123456789012"/></div>
-    <button class="btn btn-p" style="width:100%" onclick="confirmPay()">Confirm Payment →</button>
-    <div style="font-size:11px;color:var(--t2);margin-top:10px;text-align:center">✅ Verified manually within 2 hours<br/>📧 Confirmation sent to your email</div>
+    <div class="ig"><label>UPI Transaction ID (from your payment app)</label><input type="text" id="txnId" placeholder="e.g. 123456789012"/></div>
+    <button class="btn btn-p" style="width:100%" onclick="confirmPay()">Confirm Payment ✅</button>
+    <div style="font-size:11px;color:var(--t2);margin-top:10px;text-align:center">✅ Verified within 2 hours • 📧 support@edun.in</div>
   </div>
 </div>
 
+<input type="file" id="photoUpload" accept="image/*" style="display:none" onchange="handlePhoto(event)"/>
 
-
-<script src="/syllabus.js"></script>
 <script>
-const EXAM_CONFIG={
-  '10th CBSE':{icon:'📚',desc:'Class 10 Board',plan:'free',color:'#10b981'},
-  '12th CBSE':{icon:'🎓',desc:'Class 12 Board',plan:'free',color:'#10b981'},
-  'SSC CGL':{icon:'🏛️',desc:'Combined Graduate Level',plan:'pro',color:'#6366f1'},
-  'NEET':{icon:'🔬',desc:'Medical Entrance',plan:'pro',color:'#6366f1'},
-  'JEE':{icon:'⚙️',desc:'Engineering Entrance',plan:'elite',color:'#f59e0b'},
-  'CUET':{icon:'🏫',desc:'Central University Entrance',plan:'elite',color:'#f59e0b'}
+// ============ DATA ============
+const EXAMS={
+  '10th CBSE':{icon:'📚',desc:'Class 10 Board',plan:'free'},
+  '12th CBSE':{icon:'🎓',desc:'Class 12 Board',plan:'free'},
+  'SSC CGL':{icon:'🏛️',desc:'Govt Job Exam',plan:'pro'},
+  'NEET':{icon:'🔬',desc:'Medical Entrance',plan:'pro'},
+  'JEE':{icon:'⚙️',desc:'Engineering',plan:'elite'},
+  'CUET':{icon:'🏫',desc:'Central University',plan:'elite'}
 };
 
+const SYL={
+  '10th CBSE':{
+    'Mathematics':['Real Numbers','Polynomials','Pair of Linear Equations in Two Variables','Quadratic Equations','Arithmetic Progressions','Triangles','Coordinate Geometry','Introduction to Trigonometry','Applications of Trigonometry','Circles','Areas Related to Circles','Surface Areas and Volumes','Statistics','Probability'],
+    'Science':['Chemical Reactions and Equations','Acids Bases and Salts','Metals and Non-metals','Carbon and its Compounds','Periodic Classification of Elements','Life Processes','Control and Coordination','How do Organisms Reproduce','Heredity and Evolution','Light Reflection and Refraction','Human Eye and Colourful World','Electricity','Magnetic Effects of Electric Current','Sources of Energy','Our Environment'],
+    'Social Science':['Resources and Development','Forest and Wildlife Resources','Water Resources','Agriculture','Minerals and Energy Resources','Manufacturing Industries','Lifelines of National Economy','Power Sharing','Federalism','Democracy and Diversity','Gender Religion and Caste','Popular Struggles and Movements','Political Parties','Outcomes of Democracy','Development','Sectors of Indian Economy','Money and Credit','Globalisation and the Indian Economy','Consumer Rights'],
+    'English':['Reading Comprehension','Grammar — Tenses','Grammar — Modals and Voice','Grammar — Reported Speech','Writing — Formal Letter','Writing — Article and Paragraph','Literature — A Letter to God','Literature — Nelson Mandela','Literature — Two Stories about Flying','Literature — From the Diary of Anne Frank','Literature — Glimpses of India','Literature — Mijbil the Otter','Literature — Madam Rides the Bus','Literature — The Sermon at Benares','Literature — The Proposal','Literature — Dust of Snow','Literature — Fire and Ice','Literature — A Tiger in the Zoo','Literature — How to Tell Wild Animals','Literature — The Ball Poem','Literature — Amanda','Literature — Animals','Literature — The Trees','Literature — Fog','Literature — The Tale of Custard the Dragon','Literature — For Anne Gregory']
+  },
+  '12th CBSE':{
+    'Physics':['Electric Charges and Fields','Electrostatic Potential and Capacitance','Current Electricity','Moving Charges and Magnetism','Magnetism and Matter','Electromagnetic Induction','Alternating Current','Electromagnetic Waves','Ray Optics and Optical Instruments','Wave Optics','Dual Nature of Radiation and Matter','Atoms','Nuclei','Semiconductor Electronics Materials Devices and Simple Circuits'],
+    'Chemistry':['Solid State','Solutions','Electrochemistry','Chemical Kinetics','Surface Chemistry','General Principles of Isolation of Elements','The p-Block Elements','The d and f Block Elements','Coordination Compounds','Haloalkanes and Haloarenes','Alcohols Phenols and Ethers','Aldehydes Ketones and Carboxylic Acids','Amines','Biomolecules'],
+    'Mathematics':['Relations and Functions','Inverse Trigonometric Functions','Matrices','Determinants','Continuity and Differentiability','Application of Derivatives','Integrals','Application of Integrals','Differential Equations','Vector Algebra','Three Dimensional Geometry','Linear Programming','Probability'],
+    'Biology':['Reproduction in Organisms','Sexual Reproduction in Flowering Plants','Human Reproduction','Reproductive Health','Principles of Inheritance and Variation','Molecular Basis of Inheritance','Evolution','Human Health and Disease','Strategies for Enhancement in Food Production','Microbes in Human Welfare','Biotechnology Principles and Processes','Biotechnology and its Applications','Organisms and Populations','Ecosystem','Biodiversity and Conservation','Environmental Issues'],
+    'Economics':['Introduction to Microeconomics','Consumer Equilibrium and Demand','Producer Behaviour and Supply','Forms of Market and Price Determination','National Income Accounting','Money and Banking','Determination of Income and Employment','Government Budget and the Economy','Balance of Payments'],
+    'Accountancy':['Introduction to Accounting','Theory Base of Accounting','Recording of Transactions','Bank Reconciliation Statement','Trial Balance and Rectification of Errors','Depreciation Provisions and Reserves','Financial Statements of a Company','Cash Flow Statement','Analysis of Financial Statements','Accounting for Share Capital','Issue and Redemption of Debentures']
+  },
+  'SSC CGL':{
+    'General Intelligence':[
+      'Analogy — Verbal','Analogy — Non-verbal','Classification','Series — Number','Series — Letter','Series — Mixed','Coding and Decoding','Blood Relations','Direction and Distance','Sitting Arrangement','Syllogism','Statement and Conclusions','Input and Output','Venn Diagrams','Mirror and Water Images','Paper Folding and Cutting','Figure Completion','Embedded Figures','Mathematical Operations'
+    ],
+    'Quantitative Aptitude':[
+      'Number System — Basics','LCM and HCF','Fractions and Decimals','Percentage','Profit Loss and Discount','Simple Interest','Compound Interest','Ratio and Proportion','Partnership','Average','Mixture and Alligation','Time and Work','Pipes and Cisterns','Time Speed and Distance','Boats and Streams','Algebra — Identities','Linear Equations','Quadratic Equations','Geometry — Lines and Angles','Geometry — Triangles','Geometry — Circles','Geometry — Quadrilaterals','Mensuration 2D','Mensuration 3D','Trigonometry — Basics','Heights and Distances','Data Interpretation — Tables','Data Interpretation — Bar Graphs','Data Interpretation — Pie Charts','Data Interpretation — Line Graphs'
+    ],
+    'English Language':[
+      'Reading Comprehension','Fill in the Blanks — Grammar','Fill in the Blanks — Vocabulary','Error Detection','Sentence Improvement','Sentence Rearrangement Para Jumbles','Cloze Test','Idioms and Phrases','One Word Substitution','Synonyms','Antonyms','Spelling Correction','Active and Passive Voice','Direct and Indirect Speech'
+    ],
+    'General Awareness':[
+      'Ancient Indian History','Medieval Indian History','Modern Indian History','Indian National Movement','Indian Polity — Constitution','Indian Polity — Parliament and Legislature','Indian Polity — President and Executive','Indian Economy — Basics','Indian Economy — Planning','Indian Economy — Banking and Finance','Geography — Indian Physical','Geography — Indian Climate and Drainage','Geography — World Physical','Geography — World Political','Physics — Basic Concepts','Chemistry — Basic Concepts','Biology — Basic Concepts','Computer Awareness — Basics','Current Affairs — National','Current Affairs — International','Sports and Games','Books and Authors','Awards and Honours','Schemes and Policies'
+    ]
+  },
+  'NEET':{
+    'Physics':[
+      'Physical World and Measurement','Kinematics — Motion in a Straight Line','Kinematics — Motion in a Plane','Laws of Motion — Newton Laws','Laws of Motion — Friction','Laws of Motion — Circular Motion','Work Energy and Power','System of Particles and Rotational Motion','Gravitation','Mechanical Properties of Solids','Mechanical Properties of Fluids','Thermal Properties of Matter','Thermodynamics','Kinetic Theory of Gases','Oscillations','Waves — Transverse and Longitudinal','Electrostatics — Electric Charges and Field','Electrostatics — Potential and Capacitance','Current Electricity','Moving Charges and Magnetism','Magnetism and Matter','Electromagnetic Induction','Alternating Current','Electromagnetic Waves','Ray Optics — Reflection and Refraction','Ray Optics — Lenses and Optical Instruments','Wave Optics','Dual Nature of Radiation and Matter','Atoms — Bohr Model','Nuclei — Radioactivity','Semiconductor Electronics'
+    ],
+    'Chemistry':[
+      'Some Basic Concepts of Chemistry — Mole Concept','Structure of Atom','Classification of Elements and Periodicity','Chemical Bonding and Molecular Structure','States of Matter — Gases','States of Matter — Liquids','Thermodynamics','Equilibrium — Chemical','Equilibrium — Ionic','Redox Reactions','Hydrogen','s-Block Elements — Alkali Metals','s-Block Elements — Alkaline Earth Metals','p-Block Elements Group 13 and 14','p-Block Elements Group 15 16 17 18','Organic Chemistry — Basic Principles and Techniques','Hydrocarbons — Alkanes','Hydrocarbons — Alkenes and Alkynes','Hydrocarbons — Aromatic','Environmental Chemistry','Solid State','Solutions and Colligative Properties','Electrochemistry','Chemical Kinetics','Surface Chemistry','General Principles of Isolation of Elements','d and f Block Elements','Coordination Compounds','Haloalkanes and Haloarenes','Alcohols Phenols and Ethers','Aldehydes Ketones and Carboxylic Acids','Organic Compounds with Nitrogen','Biomolecules','Polymers','Chemistry in Everyday Life'
+    ],
+    'Biology':[
+      'The Living World — Diversity','Biological Classification — 5 Kingdom','Plant Kingdom — Algae Bryophytes Pteridophytes','Plant Kingdom — Gymnosperms and Angiosperms','Animal Kingdom — Non-chordates','Animal Kingdom — Chordates','Morphology of Flowering Plants','Anatomy of Flowering Plants','Structural Organisation in Animals','Cell — The Unit of Life','Biomolecules — Carbohydrates Proteins Lipids','Cell Cycle and Cell Division','Transport in Plants','Mineral Nutrition','Photosynthesis in Higher Plants','Respiration in Plants','Plant Growth and Development','Digestion and Absorption','Breathing and Exchange of Gases','Body Fluids and Circulation','Excretory Products and their Elimination','Locomotion and Movement','Neural Control and Coordination','Chemical Coordination and Integration','Reproduction in Organisms','Sexual Reproduction in Flowering Plants','Human Reproduction','Reproductive Health','Principles of Inheritance and Variation — Mendel','Principles of Inheritance — Chromosomal Theory','Molecular Basis of Inheritance — DNA Structure','Molecular Basis of Inheritance — Transcription Translation','Evolution — Origin of Life','Evolution — Darwin and Natural Selection','Human Health and Disease — Immunity','Human Health and Disease — AIDS and Cancer','Strategies for Enhancement in Food Production','Microbes in Human Welfare','Biotechnology — Principles and Processes','Biotechnology and its Applications','Organisms and Populations','Ecosystem — Energy Flow','Biodiversity and Conservation','Environmental Issues'
+    ]
+  },
+  'JEE':{
+    'Physics':[
+      'Units Dimensions and Error Analysis','Kinematics — 1D Motion','Kinematics — 2D Projectile','Newton Laws of Motion','Friction','Work Power and Energy','Centre of Mass and Collision','Rotational Mechanics — Moment of Inertia','Rotational Mechanics — Torque and Angular Momentum','Gravitation — Kepler Laws','Simple Harmonic Motion','Waves and Sound','Fluid Mechanics — Pressure and Buoyancy','Fluid Mechanics — Bernoulli and Viscosity','Thermal Physics — Calorimetry','Kinetic Theory of Gases','Thermodynamics — 1st and 2nd Law','Electrostatics — Coulombs Law and Gauss Law','Electrostatics — Potential and Capacitors','Current Electricity — Ohms Law and Kirchhoff','Current Electricity — Wheatstone and Potentiometer','Moving Charges — Force and Biot Savart','Electromagnetic Induction — Faraday and Lenz','Alternating Current — LC and RLC Circuits','Ray Optics — Reflection and Mirrors','Ray Optics — Refraction and Lenses','Wave Optics — Interference and Diffraction','Modern Physics — Photoelectric Effect','Atomic Structure — Bohr Model','Nuclear Physics — Binding Energy and Radioactivity','Semiconductors — Diodes and Transistors'
+    ],
+    'Chemistry':[
+      'Mole Concept and Stoichiometry','Atomic Structure — Quantum Numbers','Chemical Bonding — VSEPR and MOT','Gaseous State — Ideal Gas Laws','Thermodynamics and Thermochemistry','Chemical Equilibrium — Kp and Kc','Ionic Equilibrium — pH and Buffer','Electrochemistry — EMF and Nernst','Chemical Kinetics — Rate Laws','Solid State — Crystal Structures','Solutions — Colligative Properties','Periodic Table — Trends and Properties','s Block — Alkali and Alkaline Earth','p Block — Boron and Carbon Group','p Block — Nitrogen Oxygen Halogen Noble Gas','d Block — Transition Metals','Coordination Compounds — Werner Theory IUPAC','Isomerism in Organic Chemistry','General Organic Chemistry — Inductive Resonance','Hydrocarbons — Alkanes Alkenes Alkynes','Aromatic Hydrocarbons — Benzene Reactions','Halogen Derivatives — SN1 SN2 Reactions','Alcohols and Phenols — Properties Reactions','Carbonyl Compounds — Aldehydes and Ketones','Carboxylic Acids and Derivatives','Nitrogen Compounds — Amines and Diazonium','Biomolecules — Carbohydrates and Proteins','Polymers — Types and Preparation'
+    ],
+    'Mathematics':[
+      'Sets Relations and Functions','Complex Numbers — Argand Plane','Quadratic Equations — Discriminant and Roots','Progressions — AP GP HP','Permutations and Combinations','Mathematical Induction','Binomial Theorem — General Term','Matrices — Operations and Types','Determinants — Properties and Applications','Limits — Standard Results','Continuity and Differentiability','Differentiation — Chain Product Quotient Rule','Application of Derivatives — Tangent Normal','Application of Derivatives — Maxima Minima','Integration — Standard Methods','Integration — By Parts and Partial Fractions','Definite Integration — Properties','Area Under Curves','Differential Equations — Variable Separable','Differential Equations — Linear First Order','Straight Lines — Various Forms','Circles — Tangent Normal Chord','Parabola — Standard and General Form','Ellipse — Properties and Tangent','Hyperbola — Asymptotes and Conjugate','Vectors — Dot and Cross Product','3D Geometry — Line and Plane','Probability — Bayes Theorem','Statistics — Mean Variance Standard Deviation','Trigonometry — Compound and Multiple Angles','Inverse Trigonometry — Domain Range Properties'
+    ]
+  },
+  'CUET':{
+    'General Test':[
+      'Numerical Ability — Number System','Numerical Ability — Percentage','Numerical Ability — Ratio and Proportion','Numerical Ability — Time Work Distance','Quantitative Reasoning — Data Interpretation Tables','Quantitative Reasoning — Graphs and Charts','Logical Reasoning — Analogies','Logical Reasoning — Series and Patterns','Logical Reasoning — Coding Decoding','Critical Thinking — Statement Arguments','General Mental Ability — Puzzles','General Knowledge — Indian History','General Knowledge — Geography','General Knowledge — Indian Polity','General Knowledge — Economics Basics','Current Affairs — National Events','Current Affairs — International Events'
+    ],
+    'English Language':[
+      'Reading Comprehension — Factual Passages','Reading Comprehension — Literary Passages','Vocabulary — Synonyms and Antonyms','Vocabulary — Idioms and Phrases','Grammar — Tenses and Modals','Grammar — Voice and Narration','Grammar — Error Detection','Sentence Correction and Improvement','Para Jumbles','Cloze Test','Summary Writing','Verbal Ability'
+    ],
+    'Domain — Science':[
+      'Physics Mechanics Basics','Physics Electricity and Magnetism','Physics Optics and Modern Physics','Chemistry Physical Concepts','Chemistry Organic Basics','Chemistry Inorganic Concepts','Biology Cell and Molecular','Biology Human Physiology','Biology Genetics and Evolution','Biology Ecology and Environment'
+    ],
+    'Domain — Commerce':[
+      'Accountancy — Basic Concepts','Accountancy — Financial Statements','Accountancy — Partnership Accounts','Business Studies — Management Principles','Business Studies — Marketing and Finance','Economics — Microeconomics Demand Supply','Economics — Macroeconomics National Income','Economics — Money Banking and Trade'
+    ],
+    'Domain — Humanities':[
+      'History — Ancient India Harappa to Gupta','History — Medieval India Delhi Sultanate Mughals','History — Modern India 1857 to Independence','History — World Wars and Cold War','Geography — Physical Features India','Geography — Climate Resources India','Geography — Human and Economic Geography','Political Science — Indian Constitution','Political Science — Government and Politics','Political Science — International Relations','Sociology — Society and Culture','Psychology — Human Behaviour Basics'
+    ]
+  }
+};
 const MODES={
-  learn:{label:'📚 Learn',prompt:'Give a detailed, clear explanation of this topic with examples. Include 2-3 memory tricks marked with 💡. Highlight the most exam-important points with ⭐. Make it easy for a student to understand.'},
-  trick:{label:'🧠 Tricks',prompt:'Give ONLY memory tricks, mnemonics, acronyms, stories and visual associations for this topic. Make each trick easy to remember and exam-specific. Give at least 5 different tricks.'},
-  quiz:{label:'❓ Quiz',prompt:'Generate exactly 5 MCQ questions exactly like the real exam pattern for Indian students. Format: Question, then A) B) C) D) options, then Answer: X, then Explanation: (brief). Focus on frequently tested concepts.'},
-  pyq:{label:'📋 PYQ',prompt:'Share the most important and frequently repeated previous year questions for this topic from relevant Indian exams. Explain why each concept is repeatedly tested and what pattern to expect.'},
-  strategy:{label:'🎯 Strategy',prompt:'Give specific exam strategy for this topic: time to spend, marks weightage, common mistakes students make, what to focus on and what to skip, and scoring tips.'},
-  revision:{label:'⚡ Revision',prompt:'Create a super quick revision summary. Use bullet points only. Include: key facts, important formulas or dates, commonly tested points marked with ⭐, and 2 most likely exam questions. Max 1 minute read.'}
+  learn:{l:'📚 Learn',p:'Give a comprehensive explanation of this topic. Be clear, accurate and student-friendly. Mark every memory trick with 💡 and every important exam point with ⭐. Use examples and real-life analogies. Structure with clear headings.'},
+  trick:{l:'🧠 Tricks',p:'Give ONLY memory tricks, mnemonics, acronyms, rhymes, stories and visual associations for this topic. Give minimum 5-6 different tricks. Make each fun, specific and unforgettable.'},
+  quiz:{l:'❓ Quiz',p:'Generate exactly 5 MCQ questions in the exact pattern of the real Indian exam. Format strictly: Q1) [question text]\nA) [option]\nB) [option]\nC) [option]\nD) [option]\nAnswer: [letter] — [brief explanation]\n\n[repeat for Q2-Q5]. Focus on most frequently tested concepts.'},
+  pyq:{l:'📋 PYQ',p:'Share the most important and frequently repeated previous year questions for this exact topic. Tell me which year they appeared if possible. Explain WHY each concept gets tested repeatedly and what pattern to follow.'},
+  strategy:{l:'🎯 Strategy',p:'Give specific exam strategy for this topic only: marks weightage, how much time to give, what subtopics are most important, what to skip if short on time, common student mistakes, and quick scoring tips.'},
+  revision:{l:'⚡ Revision',p:'Create a super rapid revision in bullet points ONLY. Include: key definitions, important formulas or dates, most testable facts marked with ⭐, and top 2-3 most likely exam questions. Must be readable in under 60 seconds.'}
 };
 
-let CU=null,selPlan=null,freeQCount=0;
-let curExam=null,curSubject=null,curChapter=null,curTopic=null;
-let chatHistory=[];
-let curMode='learn';
+const AIPERS={
+  fun:{n:'Fun & Witty',s:'You are Edun AI — a fun, witty and highly knowledgeable exam tutor who makes studying feel like watching your favourite show. Use relatable examples, light humour and casual language. Occasionally throw in a funny observation about exam stress. Keep content 100% accurate but delivery entertaining and engaging. Use emojis naturally. For example: "Okay so Newton\'s Third Law is basically the universe saying \'no free lunches bro\' — every action gets an equal reaction 😄". Make boring topics exciting.'},
+  serious:{n:'Serious Tutor',s:'You are Edun AI — a professional, precise and highly knowledgeable exam tutor. Be formal, accurate and exam-focused. Use clear structured language. Get straight to the point. No jokes, just quality content that will help the student score high.'},
+  strict:{n:'Strict Coach',s:'You are Edun AI — a strict but caring exam coach who pushes students to their best. Be direct and demanding. Use motivational but tough love language. Occasionally challenge the student to think harder. But always be accurate and genuinely helpful. "This concept is crucial — I expect you to know it inside out. Let\'s go."'},
+  bro:{n:'Big Bro/Sis',s:'You are Edun AI — like an elder sibling who just cracked the exam and wants to help. Mix Hindi-English naturally like "yaar", "bhai sun", "seriously ek kaam kar". Be warm, casual and supportive. Share insider tips like you are telling a secret. "Bhai/Behan listen — this chapter is gold, every year at least 3 questions aate hain isme. Let me tell you exactly what to focus on..."'}
+};
 
-function planLevel(p){return['free','pro','elite'].indexOf(p||'free')}
-function canAccess(p){return planLevel(CU?.plan)>=planLevel(p)}
-function isFreeLimited(){return CU?.plan==='free'&&freeQCount>=3}
+const MOTIVATIONS=['Ready to outsmart the exam today? 😎','One chapter closer to your dream! 🔥','Your future self will thank you for studying today! 💪','Champions study when others scroll Instagram! 🏆','Every question you solve is a step forward! 📈','You\'re doing better than you think! ⭐','That exam doesn\'t stand a chance! 😄','Aaj padh lo, kal enjoy karo! 🚀','Small consistent effort = big results! 🎯','The grind now, the glory later! 💎'];
 
+let CU=null,selPlan=null,freeCount=0;
+let cExam=null,cSub=null,cChIdx=null,cTopic=null;
+let chatHist=[],cMode='learn',aiPer='fun';
+let xp=0,streak=0,lastDay='',histStore=[];
+
+// ============ AUTH ============
 async function doRegister(){
   const n=document.getElementById('rName').value.trim();
   const e=document.getElementById('rEmail').value.trim();
   const p=document.getElementById('rPass').value;
   if(!n||!e||!p){showErr('rErr','All fields required!');return}
-  if(p.length<6){showErr('rErr','Password must be at least 6 characters!');return}
+  if(p.length<6){showErr('rErr','Password needs at least 6 characters!');return}
   try{
     const r=await fetch('/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,password:p})});
     const d=await r.json();
@@ -404,13 +599,13 @@ async function doRegister(){
     localStorage.setItem('et',d.token);
     localStorage.setItem('eu',JSON.stringify(d.user));
     CU=d.user;closeModal('register');showDash();
-  }catch(e){showErr('rErr','Connection error. Is server running?');}
+  }catch(err){showErr('rErr','Connection error! Make sure server is running.');}
 }
 
 async function doLogin(){
   const e=document.getElementById('lEmail').value.trim();
   const p=document.getElementById('lPass').value;
-  if(!e||!p){showErr('lErr','All fields required!');return}
+  if(!e||!p){showErr('lErr','Email and password required!');return}
   try{
     const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,password:p})});
     const d=await r.json();
@@ -418,241 +613,380 @@ async function doLogin(){
     localStorage.setItem('et',d.token);
     localStorage.setItem('eu',JSON.stringify(d.user));
     CU=d.user;closeModal('login');showDash();
-  }catch(e){showErr('lErr','Connection error. Is server running?');}
+  }catch(err){showErr('lErr','Connection error!');}
 }
 
 function doLogout(){
   localStorage.removeItem('et');localStorage.removeItem('eu');
-  CU=null;freeQCount=0;curExam=null;curSubject=null;curChapter=null;curTopic=null;
+  CU=null;freeCount=0;cExam=null;cSub=null;cChIdx=null;cTopic=null;
   document.getElementById('dash').style.display='none';
   document.getElementById('landing').style.display='block';
-  document.getElementById('navBtns').innerHTML=`<button class="btn btn-o" onclick="showModal('login')">Login</button><button class="btn btn-p" onclick="showModal('register')">Start Free</button>`;
+  document.getElementById('navBtns').innerHTML='<button class="btn btn-o" onclick="showModal(\'login\')">Login</button><button class="btn btn-p" onclick="showModal(\'register\')">Start Free 🚀</button>';
 }
 
+// ============ DASHBOARD ============
 function showDash(){
   document.getElementById('landing').style.display='none';
   document.getElementById('dash').style.display='block';
-  document.getElementById('navBtns').innerHTML=`<span style="font-size:12px;color:var(--t2)">Hi ${CU.name.split(' ')[0]}!</span><button class="btn btn-o" onclick="doLogout()">Logout</button>`;
+  document.getElementById('navBtns').innerHTML='<span style="font-size:12px;color:var(--t2)">Hi '+CU.name.split(' ')[0]+'! 👋</span><button class="btn btn-o" onclick="doLogout()">Logout</button>';
   document.getElementById('sbName').textContent=CU.name;
-  const pb=document.getElementById('sbPlan');pb.textContent=CU.plan.toUpperCase();pb.className=`plbadge pl-${CU.plan}`;
-  document.getElementById('welcomeMsg').textContent=`Welcome back, ${CU.name.split(' ')[0]}! 👋`;
-  document.getElementById('setName').textContent=CU.name;
-  document.getElementById('setEmail').textContent=CU.email;
-  document.getElementById('setPlan').textContent=CU.plan.toUpperCase();
-  document.getElementById('setPlan').className=`plbadge pl-${CU.plan}`;
-  buildGrids();
+  const pb=document.getElementById('sbPlan');
+  pb.textContent=CU.plan.toUpperCase();pb.className='plbadge pl-'+CU.plan;
+  document.getElementById('wm').textContent='Welcome back, '+CU.name.split(' ')[0]+'! 👋';
+  document.getElementById('mm').textContent=MOTIVATIONS[Math.floor(Math.random()*MOTIVATIONS.length)];
+  document.getElementById('sn').textContent=CU.name;
+  document.getElementById('se').textContent=CU.email;
+  document.getElementById('sp').textContent=CU.plan.toUpperCase();
+  document.getElementById('sp').className='plbadge pl-'+CU.plan;
+  loadUD();buildGrids();showSec('home');
 }
 
+function loadUD(){
+  xp=parseInt(localStorage.getItem('ex')||'0');
+  streak=parseInt(localStorage.getItem('es')||'0');
+  lastDay=localStorage.getItem('el')||'';
+  aiPer=localStorage.getItem('ea')||'fun';
+  histStore=JSON.parse(localStorage.getItem('eh')||'[]');
+  const today=new Date().toDateString();
+  if(lastDay&&lastDay!==today){
+    const yest=new Date(Date.now()-86400000).toDateString();
+    if(lastDay!==yest){streak=0;localStorage.setItem('es','0');}
+  }
+  updateXP();
+  document.querySelectorAll('[id^="ai-"]').forEach(b=>b.classList.remove('active'));
+  const ab=document.getElementById('ai-'+aiPer);
+  if(ab)ab.classList.add('active');
+}
+
+function updateXP(){
+  document.getElementById('xc').textContent=xp;
+  document.getElementById('sc').textContent=streak;
+  const lv=Math.floor(xp/100)+1;
+  document.getElementById('lv').textContent=lv;
+  document.getElementById('xf').style.width=(xp%100)+'%';
+}
+
+function addXP(n){
+  xp+=n;
+  const today=new Date().toDateString();
+  if(lastDay!==today){streak++;lastDay=today;localStorage.setItem('el',today);localStorage.setItem('es',streak);}
+  localStorage.setItem('ex',xp);
+  updateXP();
+}
+function planLv(p){return['free','pro','elite'].indexOf(p||'free')}
+function canAcc(p){return planLv(CU?.plan)>=planLv(p)}
+function isLim(){return CU?.plan==='free'&&freeCount>=3}
+
 function buildGrids(){
-  ['homeGrid','allGrid'].forEach(id=>{
-    const c=document.getElementById(id);if(!c)return;c.innerHTML='';
-    Object.entries(EXAM_CONFIG).forEach(([name,cfg])=>{
-      const ok=canAccess(cfg.plan);
+  ['homeGrid','allGrid'].forEach(gid=>{
+    const c=document.getElementById(gid);if(!c)return;c.innerHTML='';
+    Object.entries(EXAMS).forEach(([nm,cfg])=>{
+      const ok=canAcc(cfg.plan);
+      if(gid==='homeGrid'&&!ok&&cfg.plan!=='free')return;
       const d=document.createElement('div');d.className='ecard';
-      if(!ok)d.style.opacity='0.6';
-      const badgeClass=cfg.plan==='free'?'bf':cfg.plan==='pro'?'bp':'be';
-      const badgeText=cfg.plan==='free'?'FREE TRIAL':cfg.plan==='pro'?'PRO':'ELITE';
-      d.innerHTML=`<div class="eicon">${cfg.icon}</div><div class="ename">${name}</div><div class="edesc">${cfg.desc}</div><span class="ebadge ${badgeClass}">${badgeText}</span>${!ok?'<div style="font-size:10px;color:var(--r);margin-top:4px">🔒 Upgrade to unlock</div>':''}`;
-      d.onclick=()=>{if(!ok){showSec('upgrade');return}selectExam(name);};
+      if(!ok)d.style.opacity='0.55';
+      const bc=cfg.plan==='free'?'bf':cfg.plan==='pro'?'bp':'be';
+      const bt=cfg.plan==='free'?'FREE TRIAL':cfg.plan==='pro'?'PRO • ₹99':'ELITE • ₹199';
+      d.innerHTML='<div class="eicon">'+cfg.icon+'</div><div class="ename">'+nm+'</div><div class="edesc">'+cfg.desc+'</div><span class="ebadge '+bc+'">'+bt+'</span>'+((!ok&&cfg.plan!=='free')?'<div style="font-size:10px;color:var(--r);margin-top:5px">🔒 Upgrade to unlock</div>':'');
+      d.onclick=()=>{if(!ok&&cfg.plan!=='free'){showSec('upgrade');return}selExam(nm);};
       c.appendChild(d);
     });
   });
 }
 
-function selectExam(examName){
-  curExam=examName;curSubject=null;curChapter=null;curTopic=null;
-  showSec('study');
-  const syllabus=NCERT_SYLLABUS[examName];
-  if(!syllabus){showStudyContent('<p style="color:var(--t2)">Syllabus coming soon!</p>');return}
-  updateBreadcrumb();
-  let html=`<h2 style="font-size:18px;font-weight:700;margin-bottom:18px">${EXAM_CONFIG[examName].icon} ${examName} — Choose Subject</h2><div class="slist">`;
-  Object.keys(syllabus).forEach(sub=>{
-    html+=`<div class="scard-item" onclick="selectSubject('${sub}')"><h3>${sub}</h3><p>${syllabus[sub].length} topics</p></div>`;
+// ============ STUDY FLOW ============
+function selExam(nm){
+  cExam=nm;cSub=null;cChIdx=null;cTopic=null;chatHist=[];
+  showSec('study');updBC();
+  const subs=SYL[nm];
+  if(!subs){document.getElementById('studyContent').innerHTML='<p style="color:var(--t2);padding:20px;text-align:center">📚 Syllabus for this exam coming soon!</p>';return}
+  let html='<div style="font-size:17px;font-weight:800;margin-bottom:14px">'+EXAMS[nm].icon+' '+nm+' — Choose Subject</div><div class="slist">';
+  Object.keys(subs).forEach(sub=>{
+    html+='<div class="sc" onclick="selSub(\''+esc(sub)+'\')"><div class="sc-arrow">→</div><h3>'+sub+'</h3><p>'+subs[sub].length+' chapters</p></div>';
   });
   html+='</div>';
-  showStudyContent(html);
+  document.getElementById('studyContent').innerHTML=html;
+  scrollTop();
 }
 
-function selectSubject(subject){
-  curSubject=subject;curChapter=null;curTopic=null;
-  const syllabus=NCERT_SYLLABUS[curExam][subject];
-  updateBreadcrumb();
-  let html=`<h2 style="font-size:18px;font-weight:700;margin-bottom:18px">${subject} — Choose Chapter</h2><div class="slist">`;
-  syllabus.forEach((ch,i)=>{
-    html+=`<div class="scard-item" onclick="selectChapter(${i})"><h3>${ch.name}</h3><p>${ch.topics.length} topics</p></div>`;
+function selSub(sub){
+  cSub=sub;cChIdx=null;cTopic=null;chatHist=[];
+  updBC();
+  const chs=SYL[cExam][sub];
+  let html='<div style="font-size:17px;font-weight:800;margin-bottom:14px">'+sub+' — Choose Chapter</div><div class="slist">';
+  chs.forEach((ch,i)=>{
+    html+='<div class="sc" onclick="selCh('+i+')"><div class="sc-arrow">→</div><h3 style="font-size:11px">Ch '+(i+1)+'</h3><p>'+ch+'</p></div>';
   });
   html+='</div>';
-  showStudyContent(html);
+  document.getElementById('studyContent').innerHTML=html;
+  scrollTop();
 }
 
-function selectChapter(idx){
-  const chapter=NCERT_SYLLABUS[curExam][curSubject][idx];
-  curChapter=chapter.name;curTopic=null;
-  updateBreadcrumb();
-  let html=`<h2 style="font-size:18px;font-weight:700;margin-bottom:18px">${chapter.name} — Choose Topic</h2><div class="slist">`;
-  chapter.topics.forEach(topic=>{
-    html+=`<div class="scard-item" onclick="selectTopic('${topic.replace(/'/g,"\\'")}')"><h3>${topic}</h3><p>Click to study with AI</p></div>`;
-  });
-  html+=`</div><div style="margin-top:15px"><button class="btn btn-p" style="font-size:13px" onclick="selectTopic('${chapter.name.replace(/'/g,"\\'")}')">📚 Study Entire Chapter →</button></div>`;
-  showStudyContent(html);
+function selCh(idx){
+  cChIdx=idx;
+  const chNm=SYL[cExam][cSub][idx];
+  cTopic=chNm;chatHist=[];
+  openChat(chNm);
 }
 
-function selectTopic(topic){
-  curTopic=topic;
-  updateBreadcrumb();
-  chatHistory=[];
-  let html=`
-    <div style="margin-bottom:15px">
-      <h2 style="font-size:16px;font-weight:700">${topic}</h2>
-      <p style="font-size:12px;color:var(--t2)">${curExam} • ${curSubject||''} ${curChapter?'• '+curChapter:''}</p>
-    </div>
-    <div class="chatbox">
-      <div class="cmodes" id="chatModes">
-        ${Object.entries(MODES).map(([k,v])=>`<button class="mbtn${k==='learn'?' active':''}" onclick="setMode('${k}',this)">${v.label}</button>`).join('')}
-      </div>
-      <div class="cmsgs" id="chatMsgs">
-        <div class="msg ma">👋 Ready to study <strong>${topic}</strong>!<br><br>I know the complete NCERT syllabus for this topic. Choose a mode above or ask me anything directly! 🎯</div>
-      </div>
-      <div class="ciarea">
-        <textarea class="cinput" id="chatIn" placeholder="Ask anything about ${topic}..." onkeypress="chatKey(event)"></textarea>
-        <button class="sbtn" onclick="sendMsg()">➤</button>
-      </div>
-    </div>`;
-  showStudyContent(html);
-  if(isFreeLimited()){
-    addMsg('⚠️ You have reached your daily free limit of 3 questions. Upgrade to Pro for unlimited access!','a');
-    return;
+function openChat(tnm){
+  updBC();
+  const html='<div class="chatbox">'
+    +'<div class="chdr">'
+    +'<div class="chdr-l"><h3>'+tnm+'</h3><p>'+cExam+(cSub?' • '+cSub:'')+'</p></div>'
+    +'<div class="chdr-r">'
+    +'<button class="ibtn" onclick="document.getElementById(\'photoUpload\').click()" title="Upload photo for doubt">📸</button>'
+    +'<button class="ibtn" onclick="clearChat()" title="Clear chat">🗑️</button>'
+    +'</div>'
+    +'</div>'
+    +'<div class="cmodes" id="cm">'
+    +Object.entries(MODES).map(([k,v])=>'<button class="mbtn'+(k==='learn'?' active':'')+'" onclick="setMode(\''+k+'\',this)">'+v.l+'</button>').join('')
+    +'</div>'
+    +'<div class="cmsgs" id="msgs">'
+    +'<div class="msg ma">'+getWelcome(tnm)+'</div>'
+    +'</div>'
+    +'<div class="ciarea">'
+    +'<textarea class="cinput" id="ci" placeholder="Ask anything about '+tnm+'... or click 📸 to upload a doubt photo" onkeypress="ck(event)" oninput="ar(this)"></textarea>'
+    +'<button class="ubtn" onclick="document.getElementById(\'photoUpload\').click()" title="Photo doubt">📸</button>'
+    +'<button class="sbtn" onclick="send()">➤</button>'
+    +'</div>'
+    +'</div>';
+  document.getElementById('studyContent').innerHTML=html;
+  scrollTop();
+  // Auto-start AI
+  if(!isLim()){
+    askAI('Teach me "'+tnm+'" for '+cExam+'. Start with: what this chapter is about, the most important concepts I must know for the exam, and one quick memory trick to remember the key idea.',true);
   }
-  const initPrompt=`${MODES['learn'].prompt}\n\nExam: ${curExam}\nSubject: ${curSubject||'General'}\nChapter: ${curChapter||'General'}\nTopic: ${topic}\n\nStart with a brief overview and the most important exam points.`;
-  askAI(initPrompt,true);
 }
+
+function getWelcome(t){
+  const ws=['🚀 Let\'s master <strong>'+t+'</strong>! I know exactly what the examiner wants from this chapter. Let\'s go! 💪','⚡ <strong>'+t+'</strong> — one of the chapters that shows up in almost every exam. Good choice! Select a mode or ask me anything!','🧠 Ready to own <strong>'+t+'</strong>? I\'ve got memory tricks, PYQs, and everything you need. Pick a mode above!','🎯 <strong>'+t+'</strong> loading... Your AI tutor is fully loaded with NCERT knowledge for this chapter. What do you want to know?'];
+  return ws[Math.floor(Math.random()*ws.length)];
+}
+
+function esc(s){return s.replace(/'/g,"\\'")}
+function ar(el){el.style.height='46px';el.style.height=Math.min(el.scrollHeight,130)+'px';}
 
 function setMode(m,btn){
-  curMode=m;
+  cMode=m;
   document.querySelectorAll('.mbtn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  if(isFreeLimited()){addMsg('Daily limit reached! Upgrade to Pro for unlimited access.','a');return}
-  const q=`${MODES[m].prompt}\n\nExam: ${curExam}\nSubject: ${curSubject||'General'}\nChapter: ${curChapter||'General'}\nTopic: ${curTopic}`;
-  addMsg(`Switching to ${MODES[m].label} mode for: ${curTopic}`,'u');
+  if(isLim()){addMsg('⚠️ Daily limit reached! Upgrade to Pro for unlimited studying. 🔓','a');return}
+  const q=MODES[m].p+'\n\nExam: '+cExam+'\nSubject: '+(cSub||'General')+'\nTopic: '+cTopic;
+  addMsg('Switching to '+MODES[m].l+' mode for: '+cTopic,'u');
   askAI(q);
 }
 
+function getSys(){
+  const per=AIPERS[aiPer]?.s||AIPERS.fun.s;
+  const now=new Date();
+  const ds=now.toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  return per+`
+CRITICAL RULES — ALWAYS FOLLOW:
+1. You are Edun AI — India's smartest exam tutor
+2. Today's date is: ${ds}. When asked about date/time/current events — use this date naturally. Never say "I don't know the date". Just say it!
+3. NCERT is your primary source. All answers must be based on official NCERT content and exam patterns.
+4. For questions outside academics (sports, news, general knowledge) — answer helpfully and naturally, then gently redirect: "Now shall we get back to cracking ${cExam||'your exam'}? 😄"
+5. Mark every memory trick with 💡 emoji
+6. Mark every important exam point with ⭐ emoji  
+7. For JEE/NEET/SSC — mention marks weightage when you know it
+8. Current exam context — Exam: ${cExam||'General'}, Subject: ${cSub||'General'}, Topic: ${cTopic||'General'}
+9. Keep answers focused and exam-relevant
+10. If student seems stressed, be encouraging`;
+}
+
 async function askAI(prompt,silent=false){
-  if(!silent&&isFreeLimited()){
-    addMsg('⚠️ Daily limit of 3 questions reached! Upgrade to Pro for unlimited questions.','a');
-    document.getElementById('freeLimitBanner').style.display='flex';
+  if(!silent&&isLim()){
+    document.getElementById('limitBanner').style.display='flex';
+    addMsg('⚠️ You\'ve used all 3 free questions today! Upgrade to Pro for unlimited studying. Use promo code FOLLOW7 for 7 days free! 🔓','a');
     return;
   }
   const token=localStorage.getItem('et');
-  if(!silent)chatHistory.push({role:'user',content:prompt});
+  if(!silent)chatHist.push({role:'user',content:prompt});
+  const msgs=document.getElementById('msgs');
+  if(!msgs)return;
   const ld=document.createElement('div');
   ld.className='msg ma';
   ld.innerHTML='<div class="ldots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
-  const msgs=document.getElementById('chatMsgs');
-  if(msgs){msgs.appendChild(ld);scrollChat();}
-  const systemPrompt=`You are Edun AI, an expert tutor for Indian competitive exams with complete NCERT syllabus knowledge. You are accurate, helpful and exam-focused. Current context: Exam=${curExam}, Subject=${curSubject||'General'}, Chapter=${curChapter||'General'}, Topic=${curTopic||'General'}. Always give accurate NCERT-based content. Mark memory tricks with 💡 and important exam points with ⭐.`;
-  const messages=silent?[{role:'user',content:prompt}]:chatHistory;
+  msgs.appendChild(ld);scrollBot();
+  const sendMsgs=silent?[{role:'user',content:prompt}]:chatHist.slice(-12);
   try{
     const r=await fetch('/api/ask',{
       method:'POST',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
-      body:JSON.stringify({messages,system:systemPrompt,exam:curExam,topic:curTopic})
+      body:JSON.stringify({messages:sendMsgs,system:getSys(),exam:cExam,topic:cTopic,subject:cSub,mode:cMode})
     });
-    const d=await r.json();
+    const data=await r.json();
     if(ld.parentNode)ld.remove();
-    if(d.reply){
-      if(!silent)chatHistory.push({role:'assistant',content:d.reply});
-      addMsg(d.reply,'a');
-      if(CU?.plan==='free'&&!silent)freeQCount++;
-    }else{
-      addMsg('Error getting response. Please try again!','a');
+    if(data.limitReached){
+      document.getElementById('limitBanner').style.display='flex';
+      addMsg('⚠️ Daily limit reached! Upgrade to Pro for unlimited access. Use code FOLLOW7 for 7 days free! 🔓','a');
+      return;
     }
-  }catch(e){
+    if(data.reply){
+      if(!silent){chatHist.push({role:'assistant',content:data.reply});if(CU?.plan==='free')freeCount++;addXP(10);saveH(prompt,data.reply);}
+      addMsg(data.reply,'a');
+    }else{
+      addMsg('Hmm something went wrong! Error: '+(data.error||'Unknown')+'  Try again? 🤔','a');
+    }
+  }catch(err){
     if(ld.parentNode)ld.remove();
-    addMsg('Connection error. Please check your internet connection!','a');
+    addMsg('Connection lost! Check your internet and try again. 📶','a');
+  }
+}
+
+async function handlePhoto(ev){
+  const file=ev.target.files[0];if(!file)return;
+  if(isLim()){addMsg('⚠️ Daily limit reached! Upgrade to use photo doubt solver. 🔓','a');return}
+  const reader=new FileReader();
+  reader.onload=(e)=>{
+    const b64=e.target.result.split(',')[1];
+    const imgMsg=document.createElement('div');
+    imgMsg.className='msg mu';
+    imgMsg.innerHTML='📸 Sending photo for analysis...';
+    const msgs=document.getElementById('msgs');
+    if(msgs){msgs.appendChild(imgMsg);scrollBot();}
+    askAIPhoto(b64,file.type);
+  };
+  reader.readAsDataURL(file);
+  ev.target.value='';
+}
+
+
+async function askAIPhoto(b64,mime){
+  const token=localStorage.getItem('et');
+  const msgs=document.getElementById('msgs');
+  const ld=document.createElement('div');
+  ld.className='msg ma';
+  ld.innerHTML='<div class="ldots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+  if(msgs){msgs.appendChild(ld);scrollBot();}
+  try{
+    const r=await fetch('/api/ask-image',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+      body:JSON.stringify({image:b64,mimeType:mime,exam:cExam,topic:cTopic,system:getSys()})
+    });
+    const data=await r.json();
+    if(ld.parentNode)ld.remove();
+    if(data.reply){addMsg(data.reply,'a');addXP(15);}
+    else addMsg('Could not read the image clearly. Please try again with better lighting or type your question! 📝','a');
+  }catch(err){
+    if(ld.parentNode)ld.remove();
+    addMsg('Photo upload failed. Please type your question instead! 📝','a');
   }
 }
 
 function addMsg(text,s){
-  const msgs=document.getElementById('chatMsgs');
-  if(!msgs)return;
-  const d=document.createElement('div');
-  d.className=`msg m${s}`;
+  const msgs=document.getElementById('msgs');if(!msgs)return;
+  const d=document.createElement('div');d.className='msg m'+s;
   if(s==='a'){
     d.innerHTML=text
       .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
       .replace(/\*(.*?)\*/g,'<em>$1</em>')
       .replace(/💡(.*?)(?=\n|$)/g,'<div class="tbox">💡$1</div>')
-      .replace(/⭐(.*?)(?=\n|$)/g,'<div class="tbox">⭐$1</div>')
+      .replace(/⭐(.*?)(?=\n|$)/g,'<div class="sbox">⭐$1</div>')
       .replace(/\n\n/g,'<br><br>')
       .replace(/\n/g,'<br>');
-  }else{
-    d.textContent=text;
-  }
-  msgs.appendChild(d);
-  scrollChat();
+  }else{d.textContent=text;}
+  msgs.appendChild(d);scrollBot();
 }
 
-function scrollChat(){
-  const c=document.getElementById('chatMsgs');
-  if(c)c.scrollTop=c.scrollHeight;
+function scrollBot(){
+  const c=document.getElementById('msgs');
+  if(c)setTimeout(()=>{c.scrollTop=0;setTimeout(()=>{c.scrollTop=c.scrollHeight;},30);},10);
 }
 
-function chatKey(e){
-  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}
+function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
+function ck(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}
+function send(){
+  const i=document.getElementById('ci');const t=i.value.trim();if(!t)return;
+  if(isLim()){addMsg('⚠️ Daily limit reached! Upgrade to Pro for unlimited questions. 🔓','a');return}
+  addMsg(t,'u');chatHist.push({role:'user',content:t});askAI(t);i.value='';i.style.height='46px';
 }
 
-function sendMsg(){
-  const i=document.getElementById('chatIn');
-  const t=i.value.trim();
-  if(!t)return;
-  if(isFreeLimited()){
-    addMsg('⚠️ Daily limit reached! Upgrade to Pro for unlimited questions.','a');
-    showSec('upgrade');
-    return;
-  }
-  addMsg(t,'u');
-  chatHistory.push({role:'user',content:t});
-  askAI(t);
-  i.value='';
+function clearChat(){
+  chatHist=[];
+  const msgs=document.getElementById('msgs');
+  if(msgs)msgs.innerHTML='<div class="msg ma">🧹 Chat cleared! Fresh start. Ask me anything about <strong>'+cTopic+'</strong>!</div>';
 }
 
-function updateBreadcrumb(){
-  const bc=document.getElementById('breadcrumb');
-  if(!bc)return;
-  let html=`<span onclick="showSec('home')">🏠 Home</span> /`;
-  if(curExam)html+=` <span onclick="selectExam('${curExam}')">${curExam}</span>`;
-  if(curSubject)html+=` / <span onclick="selectSubject('${curSubject}')">${curSubject}</span>`;
-  if(curChapter){
-    const idx=NCERT_SYLLABUS[curExam]?.[curSubject]?.indexOf(curChapter);
-    if(idx>=0)html+=` / <span onclick="selectChapter(${idx})">${curChapter.split(' - ')[0]}</span>`;
-  }
-  if(curTopic)html+=` / <span style="color:var(--t)">${curTopic}</span>`;
+function updBC(){
+  const bc=document.getElementById('bc');if(!bc)return;
+  let html='<span onclick="showSec(\'home\')">🏠</span>';
+  if(cExam)html+=' → <span onclick="selExam(\''+esc(cExam)+'\')">'+cExam+'</span>';
+  if(cSub)html+=' → <span onclick="selSub(\''+esc(cSub)+'\')">'+cSub+'</span>';
+  if(cTopic)html+=' → <span style="color:var(--t)">'+cTopic+'</span>';
   bc.innerHTML=html;
 }
 
-function showStudyContent(html){
-  const c=document.getElementById('studyContent');
-  if(c)c.innerHTML=html;
+// ============ HISTORY ============
+function saveH(q,a){
+  if(!cTopic)return;
+  histStore.unshift({exam:cExam,sub:cSub,topic:cTopic,q:q.substring(0,100),a:a.substring(0,200),t:new Date().toLocaleString('en-IN')});
+  if(histStore.length>50)histStore=histStore.slice(0,50);
+  localStorage.setItem('eh',JSON.stringify(histStore));
 }
 
+function loadHist(){
+  const list=document.getElementById('histList');if(!list)return;
+  if(!histStore.length){list.innerHTML='<div style="text-align:center;padding:40px;color:var(--t2)">📚 No history yet! Start studying to see your sessions here.</div>';return;}
+  list.innerHTML=histStore.map((h,i)=>'<div class="hi" onclick="openH('+i+')">'+'<div class="hi-t">'+h.topic+'</div>'+'<div class="hi-m">'+h.exam+(h.sub?' • '+h.sub:'')+'</div>'+'<div class="hi-m" style="margin-top:2px">🕐 '+h.t+'</div>'+'<div style="font-size:11px;color:var(--t2);margin-top:6px;font-style:italic;border-top:1px solid var(--bd);padding-top:6px">"'+h.q.substring(0,90)+'..."</div>'+'</div>').join('');
+}
+
+function openH(i){
+  const h=histStore[i];
+  cExam=h.exam;cSub=h.sub;cTopic=h.topic;chatHist=[];
+  showSec('study');openChat(h.topic);
+}
+
+function clearHist(){
+  if(confirm('Clear all chat history? This cannot be undone.')){
+    histStore=[];localStorage.removeItem('eh');
+    loadHist();alert('History cleared! ✅');
+  }
+}
+
+/ ============ THEMES ============
+function setTheme(t,btn){
+  document.querySelectorAll('.tbtn').forEach(b=>{if(['🌙 Dark','💜 Purple','🌊 Ocean','🌿 Forest','🔴 Crimson','☀️ Light'].some(l=>b.textContent.includes(l.split(' ')[1])))b.classList.remove('active')});
+  btn.classList.add('active');
+  localStorage.setItem('et2',t);
+  const TH={
+    dark:{'--bg':'#050508','--bg2':'#0d0d14','--bg3':'#13131e','--bg4':'#1a1a28','--bd':'#252535','--t':'#f0f0ff','--t2':'#6b6b8a','--p':'#7c3aed'},
+    purple:{'--bg':'#0d0518','--bg2':'#130a22','--bg3':'#1a0f2e','--bg4':'#21143a','--bd':'#2d1f45','--t':'#f0e8ff','--t2':'#7a6899','--p':'#9333ea'},
+    ocean:{'--bg':'#020c1b','--bg2':'#051525','--bg3':'#081e30','--bg4':'#0a273c','--bd':'#0f3454','--t':'#e8f4ff','--t2':'#4a7a9b','--p':'#0ea5e9'},
+    forest:{'--bg':'#030a03','--bg2':'#071209','--bg3':'#0a1a0c','--bg4':'#0e2210','--bd':'#163018','--t':'#e8ffe8','--t2':'#4a7a5a','--p':'#16a34a'},
+    red:{'--bg':'#0a0303','--bg2':'#140606','--bg3':'#1a0808','--bg4':'#220c0c','--bd':'#2e1212','--t':'#ffe8e8','--t2':'#7a4a4a','--p':'#dc2626'},
+    light:{'--bg':'#f0f2f5','--bg2':'#ffffff','--bg3':'#f5f7fa','--bg4':'#eaedf2','--bd':'#d1d9e0','--t':'#1a1a2e','--t2':'#6b7280','--p':'#7c3aed'}
+  };
+  if(TH[t])Object.entries(TH[t]).forEach(([k,v])=>document.documentElement.style.setProperty(k,v));
+}
+
+function setAI(p,btn){
+  aiPer=p;localStorage.setItem('ea',p);
+  document.querySelectorAll('[id^="ai-"]').forEach(b=>b.classList.remove('active'));
+  document.getElementById('ai-'+p)?.classList.add('active');
+  if(cTopic)addMsg('🤖 AI switched to '+AIPERS[p].n+' mode! Notice the difference in how I talk now 😄','a');
+}
+
+// ============ SECTIONS ============
 function showSec(n){
-  ['home','exams','study','upgrade','settings'].forEach(s=>{
-    const e=document.getElementById('sec-'+s);
-    if(e)e.style.display='none';
+  ['home','exams','study','history','upgrade','settings'].forEach(s=>{
+    const e=document.getElementById('sec-'+s);if(e)e.style.display='none';
   });
-  const t=document.getElementById('sec-'+n);
-  if(t)t.style.display='block';
-  document.querySelectorAll('.sitem').forEach(i=>i.classList.remove('active'));
+  const t=document.getElementById('sec-'+n);if(t)t.style.display='block';
+  document.querySelectorAll('.titem').forEach(i=>i.classList.remove('active'));
+  const tab=document.getElementById('tab-'+n);if(tab)tab.classList.add('active');
+  if(n==='history')loadHist();
+  scrollTop();
 }
 
-let selPlan2=null;
+// ============ PAYMENT ============
 function doUpgrade(p){
   if(!CU){showModal('register');return}
-  selPlan2=p;
-  const amounts={pro:'₹59',elite:'₹199'};
-  document.getElementById('payAmt').textContent=amounts[p];
-  document.getElementById('paySub').textContent=`Upgrading to ${p.toUpperCase()} Plan`;
+  selPlan=p;
+  document.getElementById('payAmt').textContent=p==='pro'?'₹99':'₹199';
+  document.getElementById('paySub').textContent='Upgrading to '+p.toUpperCase()+' — Almost there! 🎉';
   showModal('pay');
 }
 
@@ -661,69 +995,45 @@ async function confirmPay(){
   if(!tx){alert('Please enter your UPI transaction ID!');return}
   const token=localStorage.getItem('et');
   try{
-    const r=await fetch('/api/upgrade',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
-      body:JSON.stringify({plan:selPlan2})
-    });
+    const r=await fetch('/api/upgrade',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({plan:selPlan,txnId:tx})});
     const d=await r.json();
     if(d.token){
-      localStorage.setItem('et',d.token);
-      CU.plan=selPlan2;
-      localStorage.setItem('eu',JSON.stringify(CU));
-      closeModal('pay');
-      showDash();
-      freeQCount=0;
-      alert(`✅ Plan upgraded to ${selPlan2.toUpperCase()}!\nWelcome to Edun ${selPlan2.toUpperCase()}!`);
-    }
-  }catch(e){alert('Error processing payment. Please contact support@edun.in');}
+      localStorage.setItem('et',d.token);CU.plan=selPlan;localStorage.setItem('eu',JSON.stringify(CU));
+      closeModal('pay');freeCount=0;showDash();
+      alert('🎉 Welcome to Edun '+selPlan.toUpperCase()+'! Unlimited access unlocked! Time to crack that exam! 🔥');
+    }else{alert('Error: '+(d.error||'Contact support@edun.in'));}
+  }catch(e){alert('Connection error. Try again.');}
 }
 
-function landingExam(n){
-  if(!CU){showModal('register');return}
-  showDash();
-  selectExam(n);
+async function applyPromo(){
+  const code=document.getElementById('pin').value.trim().toUpperCase();
+  if(!code){alert('Enter a promo code!');return}
+  const token=localStorage.getItem('et');
+  try{
+    const r=await fetch('/api/apply-promo',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({code})});
+    const d=await r.json();
+    if(d.token){
+      localStorage.setItem('et',d.token);CU.plan=d.plan;localStorage.setItem('eu',JSON.stringify(CU));
+      freeCount=0;showDash();alert('🎉 '+d.message+' Let\'s go! 🚀');
+    }else{alert('❌ '+(d.error||'Invalid code. Try FOLLOW7 or EDUNLAUNCH!'));}
+  }catch(e){alert('Connection error');}
 }
 
+function landingExam(n){if(!CU){showModal('register');return}showDash();selExam(n);}
 function showModal(t){document.getElementById(t+'Modal').classList.add('active');}
 function closeModal(t){document.getElementById(t+'Modal').classList.remove('active');}
 function switchM(f,t){closeModal(f);showModal(t);}
-function showErr(id,msg){
-  const e=document.getElementById(id);
-  e.textContent=msg;e.style.display='block';
-  setTimeout(()=>e.style.display='none',4000);
-}
+function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.style.display='block';setTimeout(()=>e.style.display='none',4000);}
 
 window.onload=()=>{
   const t=localStorage.getItem('et');
   const u=localStorage.getItem('eu');
   if(t&&u){CU=JSON.parse(u);showDash();}
+  const th=localStorage.getItem('et2');
+  if(th){const btn=document.querySelector('.tbtn');if(btn)setTheme(th,btn);}
+  aiPer=localStorage.getItem('ea')||'fun';
+  histStore=JSON.parse(localStorage.getItem('eh')||'[]');
 };
 </script>
 </body>
 </html>
-<script>
-async function applyPromo(){
-  const code=document.getElementById('promoCode')?.value?.trim();
-  if(!code){alert('Enter a promo code!');return}
-  const token=localStorage.getItem('et');
-  try{
-    const r=await fetch('/api/apply-promo',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
-      body:JSON.stringify({code})
-    });
-    const d=await r.json();
-    if(d.token){
-      localStorage.setItem('et',d.token);
-      CU.plan=d.plan;
-      localStorage.setItem('eu',JSON.stringify(CU));
-      closeModal('pay');
-      showDash();
-      alert('🎉 '+d.message);
-    }else{
-      alert('❌ '+(d.error||'Invalid promo code'));
-    }
-  }catch(e){alert('Connection error');}
-}
-</script>
