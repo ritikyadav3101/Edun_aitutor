@@ -354,3 +354,38 @@ app.get('/api/admin',auth,(req,res)=>{
 
 const PORT=process.env.PORT||10000;
 app.listen(PORT,'0.0.0.0',()=>console.log(`Edun AI running on port ${PORT}`));
+
+app.post('/api/ask-image',auth,(req,res)=>{
+  try{
+    const{image,mimeType,exam,topic,system}=req.body;
+    if(!GEMINI)return res.status(400).json({error:'Image feature requires Gemini API key'});
+    const gPayload=JSON.stringify({
+      system_instruction:{parts:[{text:system||'You are an expert exam tutor. Analyze this image and solve the question or explain the concept shown.'}]},
+      contents:[{parts:[
+        {inline_data:{mime_type:mimeType||'image/jpeg',data:image}},
+        {text:'This is a question or concept from '+exam+' exam'+(topic?' related to '+topic:'')+'. Please solve it step by step, explain the concept, and give memory tricks if applicable. Mark important exam points with ⭐ and memory tricks with 💡'}
+      ]}]
+    });
+    const r=https.request({
+      hostname:'generativelanguage.googleapis.com',
+      path:`/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI}`,
+      method:'POST',
+      headers:{'Content-Type':'application/json','Content-Length':Buffer.byteLength(gPayload)}
+    },apiRes=>{
+      let d='';
+      apiRes.on('data',c=>d+=c);
+      apiRes.on('end',()=>{
+        try{
+          const p=JSON.parse(d);
+          if(p.candidates?.[0]?.content?.parts?.[0]?.text){
+            res.json({reply:p.candidates[0].content.parts[0].text});
+          }else{
+            res.status(500).json({error:'Could not process image'});
+          }
+        }catch(e){res.status(500).json({error:'Parse error'})}
+      });
+    });
+    r.on('error',e=>res.status(500).json({error:e.message}));
+    r.write(gPayload);r.end();
+  }catch(e){res.status(500).json({error:e.message})}
+});
