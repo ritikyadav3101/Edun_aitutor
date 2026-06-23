@@ -319,7 +319,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bd);padding:20px;text-al
           <input id="PROMO_IN" type="text" placeholder="e.g. FOLLOW7" style="flex:1;padding:10px 13px;background:var(--bg3);border:1px solid var(--bd);border-radius:9px;color:var(--t);font-size:13px;outline:none;font-family:Inter,sans-serif"/>
           <button class="btn btn-p" onclick="applyPromo()">Apply ✨</button>
         </div>
-        <div style="font-size:11px;color:var(--t2);margin-top:7px">Follow @edunai on Instagram for free codes!</div></div><div style="margin-top:14px;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:15px"><div style="font-size:14px;font-weight:700;margin-bottom:4px">📅 Annual Plans</div><div style="font-size:11px;color:var(--t2);margin-bottom:12px">Pay once. Study all year. Best value!</div><div style="display:flex;flex-direction:column;gap:8px"><div style="background:var(--bg3);border:1px solid var(--bd);border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-weight:700;font-size:13px">Starter Annual</div><div style="font-size:11px;color:var(--t2)">10th &amp; 12th · Save ₹209</div></div><button class="btn btn-p" style="font-size:12px;padding:7px 14px" onclick="doUpgradeAnnual('starter_annual',499)">₹499/yr</button></div><div style="background:var(--bg3);border:1px solid rgba(124,58,237,0.3);border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-weight:700;font-size:13px">⭐ Pro Annual</div><div style="font-size:11px;color:var(--t2)">SSC &amp; NEET · Save ₹389</div></div><button class="btn btn-p" style="font-size:12px;padding:7px 14px" onclick="doUpgradeAnnual('pro_annual',799)">₹799/yr</button></div><div style="background:var(--bg3);border:1px solid rgba(245,158,11,0.3);border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-weight:700;font-size:13px">👑 Elite Annual</div><div style="font-size:11px;color:var(--t2)">All 6 exams · Save ₹789</div></div><button class="btn btn-y" style="font-size:12px;padding:7px 14px" onclick="doUpgradeAnnual('elite_annual',1599)">₹1599/yr</button></div></div>
+        <div style="font-size:11px;color:var(--t2);margin-top:7px">Follow @edunai on Instagram for free codes!</div>
       </div>
     </div>
 
@@ -429,7 +429,7 @@ var riddleIdx=0,gameScore=0,gameIdx=0,gameAnswered=false;
 function q(id){return document.getElementById(id);}
 function planLv(p){return['free','pro','elite'].indexOf(p||'free');}
 function canAcc(p){return planLv(CU?CU.plan:'free')>=planLv(p);}
-function isLim(m){var premModes=["pyq","strategy","revision"];if(!premModes.includes(m||cMode))return false;return CU&&CU.plan==="free"&&freeCount>=3;}
+function isLim(){return CU&&CU.plan==='free'&&freeCount>=3;}
 function esc(s){return s.replace(/'/g,"\\'");}
 
 function openM(id){var el=q('M_'+id);if(el)el.classList.add('on');}
@@ -670,6 +670,7 @@ function updBC(){
   bc.innerHTML=html;
 }
 
+async function doSearch(){
   var inp=q('SEARCH_IN'),t=inp.value.trim();if(!t)return;
   var token=localStorage.getItem('et');
   if(!token){q('SEARCH_RESULTS').innerHTML='<div style="text-align:center;padding:20px;color:var(--t2)">Please login to use AI Search! <a onclick="openM(\'login\')" style="color:#a78bfa;cursor:pointer">Login here</a></div>';return;}
@@ -808,30 +809,6 @@ window.onload=function(){
   aiPer=localStorage.getItem('ea')||'fun';
   histStore=JSON.parse(localStorage.getItem('eh')||'[]');
 };
-
-
-
-function doUpgradeAnnual(plan, amount) {
-  if (!CU) { openM('reg'); return; }
-  selPlan = plan;
-  q('PAY_AMT').textContent = '₹' + amount;
-  q('PAY_SUB').textContent = 'Annual Plan — Best Value! Save up to ₹789 🎉';
-  openM('pay');
-}
-async function doSearch(){
-  var t=q('SEARCH_IN').value.trim();
-  if(!t)return;
-  var token=localStorage.getItem('et');
-  if(!token){q('SEARCH_RESULTS').innerHTML='<div style="padding:20px;color:var(--t2);text-align:center">Please login! <a onclick="openM(\'login\')" style="color:#a78bfa;cursor:pointer">Login</a></div>';return;}
-  q('SEARCH_RESULTS').innerHTML='<div class="ldots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
-  var sys='You are Edun AI Search. Today is '+new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})+'. Answer any question accurately. For events after early 2024 say your knowledge goes to early 2024. Use emojis. Be helpful.';
-  try{
-    var r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({messages:[{role:'user',content:t}],system:sys,exam:'Search',topic:t,mode:'learn'})});
-    var d=await r.json();
-    if(d.reply){q('SEARCH_RESULTS').innerHTML='<div class="search-result"><div style="font-size:11px;color:#a78bfa;margin-bottom:8px">🔍 Edun AI Answer</div>'+d.reply.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/💡(.*?)(?=\n|$)/g,'<div class="tbox">💡$1</div>').replace(/⭐(.*?)(?=\n|$)/g,'<div class="sbox">⭐$1</div>').replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>')+'</div>';addXP(5);}
-    else{q('SEARCH_RESULTS').innerHTML='<div style="padding:15px;color:var(--r)">'+(d.error||'Try again!')+'</div>';}
-  }catch(e){q('SEARCH_RESULTS').innerHTML='<div style="padding:15px;color:var(--r)">Connection error!</div>';}
-}
 </script>
 </body>
 </html>
