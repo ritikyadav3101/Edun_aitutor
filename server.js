@@ -57,7 +57,7 @@ app.post('/api/upgrade',auth,(req,res)=>{
   }catch(e){res.status(500).json({error:e.message})}
 });
 app.post('/api/apply-promo',auth,(req,res)=>{
-  const PROMOS={'FOLLOW7':{plan:'elite',days:7,msg:'7 days Elite access activated!'},'EDUNLAUNCH':{plan:'pro',days:30,msg:'30 days Pro access activated!'},'NEET2025':{plan:'pro',days:14,msg:'14 days Pro access activated!'},'JEE2025':{plan:'elite',days:14,msg:'14 days Elite access activated!'},'LAUNCH50':{plan:'pro',days:30,msg:'30 days Pro access activated!'}};
+  const PROMOS={'FOLLOW7':{plan:'elite',days:7,msg:'7 days Elite access activated!'},'EDUNLAUNCH':{plan:'pro',days:30,msg:'30 days Pro access activated!'},'NEET2025':{plan:'pro',days:14,msg:'14 days Pro access activated!'},'JEE2025':{plan:'elite',days:14,msg:'14 days Elite access activated!'},'STARTER59':{plan:'starter',days:30,msg:'30 days Pro access activated!'}};
   const code=(req.body.code||'').toUpperCase();
   const promo=PROMOS[code];
   if(!promo)return res.status(400).json({error:'Invalid promo code'});
@@ -107,3 +107,5 @@ app.get('/api/admin',auth,(req,res)=>{
   res.json({totalUsers:db.users.length,plans:{free:db.users.filter(u=>u.plan==='free').length,pro:db.users.filter(u=>u.plan==='pro').length,elite:db.users.filter(u=>u.plan==='elite').length},users:db.users.map(u=>({name:u.name,email:u.email,plan:u.plan,date:u.createdAt})),recentLogins:(logs.logins||[]).slice(-20),recentSearches:(logs.searches||[]).slice(-30),upgrades:(logs.upgrades||[]),estimatedRevenue:{pro:db.users.filter(u=>u.plan==='pro').length*99,elite:db.users.filter(u=>u.plan==='elite').length*199}});
 });
 app.listen(process.env.PORT||10000,'0.0.0.0',()=>console.log('Edun AI running!'));
+
+// Starter plan at 59
