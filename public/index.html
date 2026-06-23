@@ -429,7 +429,7 @@ var riddleIdx=0,gameScore=0,gameIdx=0,gameAnswered=false;
 function q(id){return document.getElementById(id);}
 function planLv(p){return['free','pro','elite'].indexOf(p||'free');}
 function canAcc(p){return planLv(CU?CU.plan:'free')>=planLv(p);}
-function isLim(){return CU&&CU.plan==='free'&&freeCount>=3;}
+function isLim(m){var premModes=["pyq","strategy","revision"];if(!premModes.includes(m||cMode))return false;return CU&&CU.plan==="free"&&freeCount>=3;}
 function esc(s){return s.replace(/'/g,"\\'");}
 
 function openM(id){var el=q('M_'+id);if(el)el.classList.add('on');}
