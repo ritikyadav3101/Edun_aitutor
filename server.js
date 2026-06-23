@@ -109,3 +109,38 @@ app.get('/api/admin',auth,(req,res)=>{
 app.listen(process.env.PORT||10000,'0.0.0.0',()=>console.log('Edun AI running!'));
 
 // Starter plan at 59
+
+app.post('/api/websearch', auth, async (req, res) => {
+  try {
+    const { query } = req.body;
+    const SERPER = (process.env.SERPER_KEY || '').trim();
+    if (!SERPER) return res.status(400).json({ error: 'Search not configured' });
+    const payload = JSON.stringify({ q: query, num: 5 });
+    const r = https.request({
+      hostname: 'google.serper.dev',
+      path: '/search',
+      method: 'POST',
+      headers: {
+        'X-API-KEY': SERPER,
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(payload)
+      }
+    }, apiRes => {
+      let d = '';
+      apiRes.on('data', c => d += c);
+      apiRes.on('end', () => {
+        try {
+          const results = JSON.parse(d);
+          const snippets = (results.organic || []).slice(0, 4).map(r => ({
+            title: r.title,
+            snippet: r.snippet,
+            link: r.link
+          }));
+          res.json({ results: snippets });
+        } catch(e) { res.status(500).json({ error: e.message }); }
+      });
+    });
+    r.on('error', e => res.status(500).json({ error: e.message }));
+    r.write(payload); r.end();
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});

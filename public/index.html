@@ -670,7 +670,6 @@ function updBC(){
   bc.innerHTML=html;
 }
 
-async function doSearch(){
   var inp=q('SEARCH_IN'),t=inp.value.trim();if(!t)return;
   var token=localStorage.getItem('et');
   if(!token){q('SEARCH_RESULTS').innerHTML='<div style="text-align:center;padding:20px;color:var(--t2)">Please login to use AI Search! <a onclick="openM(\'login\')" style="color:#a78bfa;cursor:pointer">Login here</a></div>';return;}
@@ -818,6 +817,20 @@ function doUpgradeAnnual(plan, amount) {
   q('PAY_AMT').textContent = '₹' + amount;
   q('PAY_SUB').textContent = 'Annual Plan — Best Value! Save up to ₹789 🎉';
   openM('pay');
+}
+async function doSearch(){
+  var t=q('SEARCH_IN').value.trim();
+  if(!t)return;
+  var token=localStorage.getItem('et');
+  if(!token){q('SEARCH_RESULTS').innerHTML='<div style="padding:20px;color:var(--t2);text-align:center">Please login! <a onclick="openM(\'login\')" style="color:#a78bfa;cursor:pointer">Login</a></div>';return;}
+  q('SEARCH_RESULTS').innerHTML='<div class="ldots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+  var sys='You are Edun AI Search. Today is '+new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})+'. Answer any question accurately. For events after early 2024 say your knowledge goes to early 2024. Use emojis. Be helpful.';
+  try{
+    var r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({messages:[{role:'user',content:t}],system:sys,exam:'Search',topic:t,mode:'learn'})});
+    var d=await r.json();
+    if(d.reply){q('SEARCH_RESULTS').innerHTML='<div class="search-result"><div style="font-size:11px;color:#a78bfa;margin-bottom:8px">🔍 Edun AI Answer</div>'+d.reply.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/💡(.*?)(?=\n|$)/g,'<div class="tbox">💡$1</div>').replace(/⭐(.*?)(?=\n|$)/g,'<div class="sbox">⭐$1</div>').replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>')+'</div>';addXP(5);}
+    else{q('SEARCH_RESULTS').innerHTML='<div style="padding:15px;color:var(--r)">'+(d.error||'Try again!')+'</div>';}
+  }catch(e){q('SEARCH_RESULTS').innerHTML='<div style="padding:15px;color:var(--r)">Connection error!</div>';}
 }
 </script>
 </body>
